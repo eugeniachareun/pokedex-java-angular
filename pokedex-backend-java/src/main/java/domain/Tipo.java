@@ -37,10 +37,10 @@ public class Tipo implements Serializable {
   private Integer idTipo;
   @Size(max = 45)
   private String tipo;
-  @OneToMany(mappedBy = "tipo")
-  private List<Pokemon> pokemonList;
   @OneToMany(mappedBy = "tipo1")
   private List<Pokemon> pokemonList1;
+  @OneToMany(mappedBy = "tipo2")
+  private List<Pokemon> pokemonList2;
 
   public Tipo() {
   }
@@ -65,20 +65,20 @@ public class Tipo implements Serializable {
     this.tipo = tipo;
   }
 
-  public List<Pokemon> getPokemonList() {
-    return pokemonList;
-  }
-
-  public void setPokemonList(List<Pokemon> pokemonList) {
-    this.pokemonList = pokemonList;
-  }
-
   public List<Pokemon> getPokemonList1() {
     return pokemonList1;
   }
 
   public void setPokemonList1(List<Pokemon> pokemonList1) {
     this.pokemonList1 = pokemonList1;
+  }
+
+  public List<Pokemon> getPokemonList2() {
+    return pokemonList2;
+  }
+
+  public void setPokemonList2(List<Pokemon> pokemonList2) {
+    this.pokemonList2 = pokemonList2;
   }
 
   @Override
