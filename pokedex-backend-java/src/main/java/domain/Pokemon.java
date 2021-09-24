@@ -150,7 +150,9 @@ public class Pokemon implements Serializable {
 
   @Override
   public String toString() {
-    return "domain.Pokemon[ idPkmn=" + idPkmn + " ]";
+    return "Pokemon{" + "idPkmn=" + idPkmn + ", nroPkmn=" + nroPkmn + ", nombre=" + nombre + ", descripcion=" + descripcion + ", mostrar=" + mostrar + ", tipo1=" + tipo1 + ", tipo2=" + tipo2 + '}';
   }
+
+
   
 }

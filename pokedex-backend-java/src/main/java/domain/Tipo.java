@@ -103,7 +103,9 @@ public class Tipo implements Serializable {
 
   @Override
   public String toString() {
-    return "domain.Tipo[ idTipo=" + idTipo + " ]";
+    return "Tipo{" + "idTipo=" + idTipo + ", tipo=" + tipo + '}';
   }
+
+
   
 }
