@@ -29,9 +29,7 @@ import javax.validation.constraints.Size;
   @NamedQuery(name = "Pokemon.findAll", query = "SELECT p FROM Pokemon p"),
   @NamedQuery(name = "Pokemon.findByIdPkmn", query = "SELECT p FROM Pokemon p WHERE p.idPkmn = :idPkmn"),
   @NamedQuery(name = "Pokemon.findByNroPkmn", query = "SELECT p FROM Pokemon p WHERE p.nroPkmn = :nroPkmn"),
-  @NamedQuery(name = "Pokemon.findByNombre", query = "SELECT p FROM Pokemon p WHERE p.nombre = :nombre"),
-  @NamedQuery(name = "Pokemon.findByDescripcion", query = "SELECT p FROM Pokemon p WHERE p.descripcion = :descripcion"),
-  @NamedQuery(name = "Pokemon.findByMostrar", query = "SELECT p FROM Pokemon p WHERE p.mostrar = :mostrar")})
+  @NamedQuery(name = "Pokemon.findByNombre", query = "SELECT p FROM Pokemon p WHERE p.nombre = :nombre")})
 public class Pokemon implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -55,12 +53,12 @@ public class Pokemon implements Serializable {
     @JoinColumn(name = "tipo1", referencedColumnName = "id_tipo"),
     @JoinColumn(name = "tipo1", referencedColumnName = "id_tipo")})
   @ManyToOne
-  private Tipo tipo;
+  private Tipo tipo1;
   @JoinColumns({
     @JoinColumn(name = "tipo2", referencedColumnName = "id_tipo"),
     @JoinColumn(name = "tipo2", referencedColumnName = "id_tipo")})
   @ManyToOne
-  private Tipo tipo1;
+  private Tipo tipo2;
 
   public Pokemon() {
   }
@@ -69,8 +67,7 @@ public class Pokemon implements Serializable {
     this.idPkmn = idPkmn;
   }
 
-  public Pokemon(Integer idPkmn, int nroPkmn, String nombre) {
-    this.idPkmn = idPkmn;
+  public Pokemon(int nroPkmn, String nombre) {
     this.nroPkmn = nroPkmn;
     this.nombre = nombre;
   }
@@ -115,20 +112,20 @@ public class Pokemon implements Serializable {
     this.mostrar = mostrar;
   }
 
-  public Tipo getTipo() {
-    return tipo;
-  }
-
-  public void setTipo(Tipo tipo) {
-    this.tipo = tipo;
-  }
-
   public Tipo getTipo1() {
     return tipo1;
   }
 
-  public void setTipo1(Tipo tipo1) {
-    this.tipo1 = tipo1;
+  public void setTipo1(Tipo tipo) {
+    this.tipo1 = tipo;
+  }
+
+  public Tipo getTipo2() {
+    return tipo2;
+  }
+
+  public void setTipo2(Tipo tipo) {
+    this.tipo1 = tipo2;
   }
 
   @Override
