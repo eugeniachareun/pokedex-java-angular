@@ -26,8 +26,7 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @NamedQueries({
-  @NamedQuery(name = "Pokemon.findAll", query = "SELECT p FROM Pokemon p"),
-  @NamedQuery(name = "Pokemon.findByIdPkmn", query = "SELECT p FROM Pokemon p WHERE p.idPkmn = :idPkmn"),
+  @NamedQuery(name = "Pokemon.findAll", query = "SELECT p FROM Pokemon p ORDER BY p.idPkmn"),
   @NamedQuery(name = "Pokemon.findByNroPkmn", query = "SELECT p FROM Pokemon p WHERE p.nroPkmn = :nroPkmn"),
   @NamedQuery(name = "Pokemon.findByNombre", query = "SELECT p FROM Pokemon p WHERE p.nombre = :nombre")})
 public class Pokemon implements Serializable {
@@ -70,6 +69,10 @@ public class Pokemon implements Serializable {
   public Pokemon(int nroPkmn, String nombre) {
     this.nroPkmn = nroPkmn;
     this.nombre = nombre;
+  }
+  
+  public Pokemon(int nroPkmn){
+    this.nroPkmn = nroPkmn;
   }
 
   public Integer getIdPkmn() {
