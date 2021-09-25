@@ -23,8 +23,8 @@ public class PokemonDaoImpl implements PokemonDao{
   }
 
   @Override
-  public List<Pokemon> getAllPokemonsByTipo(Tipo tipo) {
-    return em.createQuery( "SELECT p from Pokemon p WHERE p.tipo1 = :idTipo OR p.tipo2 = :idTipo", Pokemon.class).setParameter("idTipo", tipo.getIdTipo()).getResultList();
+  public List<Pokemon> getAllPokemonsByTipo(Integer idTipo) {
+    return em.createQuery( "SELECT p from Pokemon p WHERE p.tipo1.idTipo = :idTipo OR p.tipo2.idTipo = :idTipo", Pokemon.class).setParameter("idTipo", idTipo).getResultList();
   }
 
   @Override

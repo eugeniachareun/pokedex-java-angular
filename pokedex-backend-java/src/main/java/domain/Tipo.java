@@ -30,17 +30,16 @@ import javax.validation.constraints.Size;
 public class Tipo implements Serializable {
 
   private static final long serialVersionUID = 1L;
+  
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Basic(optional = false)
   @Column(name = "id_tipo")
   private Integer idTipo;
+  
   @Size(max = 45)
   private String tipo;
-  @OneToMany(mappedBy = "tipo1")
-  private List<Pokemon> pokemonList1;
-  @OneToMany(mappedBy = "tipo2")
-  private List<Pokemon> pokemonList2;
+  
 
   public Tipo() {
   }
@@ -63,22 +62,6 @@ public class Tipo implements Serializable {
 
   public void setTipo(String tipo) {
     this.tipo = tipo;
-  }
-
-  public List<Pokemon> getPokemonList1() {
-    return pokemonList1;
-  }
-
-  public void setPokemonList1(List<Pokemon> pokemonList1) {
-    this.pokemonList1 = pokemonList1;
-  }
-
-  public List<Pokemon> getPokemonList2() {
-    return pokemonList2;
-  }
-
-  public void setPokemonList2(List<Pokemon> pokemonList2) {
-    this.pokemonList2 = pokemonList2;
   }
 
   @Override

@@ -13,7 +13,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -32,30 +31,33 @@ import javax.validation.constraints.Size;
 public class Pokemon implements Serializable {
 
   private static final long serialVersionUID = 1L;
+  
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Basic(optional = false)
   @Column(name = "id_pkmn")
   private Integer idPkmn;
+  
   @Basic(optional = false)
   @NotNull
   @Column(name = "nro_pkmn")
   private int nroPkmn;
+  
   @Basic(optional = false)
   @NotNull
   @Size(min = 1, max = 45)
   private String nombre;
+  
   @Size(max = 255)
   private String descripcion;
+  
   private Short mostrar;
-  @JoinColumns({
-    @JoinColumn(name = "tipo1", referencedColumnName = "id_tipo"),
-    @JoinColumn(name = "tipo1", referencedColumnName = "id_tipo")})
+  
+  @JoinColumn(name = "tipo1", referencedColumnName = "id_tipo")
   @ManyToOne
   private Tipo tipo1;
-  @JoinColumns({
-    @JoinColumn(name = "tipo2", referencedColumnName = "id_tipo"),
-    @JoinColumn(name = "tipo2", referencedColumnName = "id_tipo")})
+  
+  @JoinColumn(name = "tipo2", referencedColumnName = "id_tipo")
   @ManyToOne
   private Tipo tipo2;
 

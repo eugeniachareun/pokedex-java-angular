@@ -2,14 +2,12 @@ package service;
 
 import data.PokemonDao;
 import domain.Pokemon;
-import domain.Tipo;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
 
 
 /**
@@ -37,8 +35,8 @@ public class PokemonServiceRS {
   @Produces(value= MediaType.APPLICATION_JSON)
   @Path("tipo/{idTipo}")
   public List<Pokemon> buscarPokemonsPorTipo(@PathParam("idTipo") int idTipo){
-    Tipo tipo = new Tipo(idTipo);
-    List<Pokemon> pokemons = pokemonDao.getAllPokemonsByTipo(tipo);
+    System.out.println("ID tipo seleccionado: " + idTipo);
+    List<Pokemon> pokemons = pokemonDao.getAllPokemonsByTipo(idTipo);
     System.out.println("Lista recuperada de pokemons por tipo " + pokemons);
     return pokemons;
   }
@@ -53,7 +51,7 @@ public class PokemonServiceRS {
   }
 
   @GET
-  @Produces(value= MediaType.APPLICATION_JSON)
+  @Produces(value = MediaType.APPLICATION_JSON)
   @Path("nro/{nroPkmn}")
   public Pokemon buscarPokemonPorNro(@PathParam("nroPkmn") int nroPkmn){
     Pokemon pkmn = pokemonDao.getPokemonByNro(nroPkmn);
@@ -62,7 +60,7 @@ public class PokemonServiceRS {
   }
   
   @GET
-  @Produces(value= MediaType.APPLICATION_JSON)
+  @Produces(value = MediaType.APPLICATION_JSON)
   @Path("nombre/{nombre}")
   public Pokemon buscarPokemonPorNombre(@PathParam("nombre") String nombre){
     Pokemon pkmn = pokemonDao.getPokemonByNombre(nombre);
@@ -71,7 +69,8 @@ public class PokemonServiceRS {
   }
   
   @GET
-  @Produces(value= MediaType.APPLICATION_JSON)
+  @Produces(value = MediaType.APPLICATION_JSON)
+  @Path("/random")
   public Pokemon obtenerPokemonRandom(){
     Pokemon pkmn = pokemonDao.getRandomPokemon();
     return pkmn;
