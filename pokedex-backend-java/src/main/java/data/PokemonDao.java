@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface PokemonDao {
   public List<Pokemon> getAllPokemons();
-  public List<Pokemon> getAllPokemonsByTipo(Tipo tipo);
+  public List<Pokemon> getAllPokemonsByTipo(Integer tipo);
   public Pokemon getPokemonById(Integer idPkmn);
   public Pokemon getPokemonByNro(Integer nroPkmn);
   public Pokemon getPokemonByNombre(String nombre);
