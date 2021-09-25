@@ -62,11 +62,6 @@ public class PokemonDaoImpl implements PokemonDao{
   }
 
   @Override
-  public void deletePokemon(Pokemon pkmn) {
-    em.remove(em.merge(pkmn));
-  }
-
-  @Override
   public void hidePokemon(Pokemon pkmn) {
     pkmn.setMostrar(Short.parseShort("0"));
     em.merge(pkmn);
@@ -78,5 +73,11 @@ public class PokemonDaoImpl implements PokemonDao{
     pkmn.setMostrar(Short.parseShort("1"));
     em.merge(pkmn);
   }
+  
+  @Override
+  public void deletePokemon(Pokemon pkmn) {
+    em.remove(em.merge(pkmn));
+  }
+
   
 }
