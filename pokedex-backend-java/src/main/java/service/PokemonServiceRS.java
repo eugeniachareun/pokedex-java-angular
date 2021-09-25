@@ -7,6 +7,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
@@ -25,7 +26,7 @@ public class PokemonServiceRS {
   private PokemonDao pokemonDao;
   
   @GET
-  @Produces(value="MediaType.APPLICATION_JSON")
+  @Produces(value= MediaType.APPLICATION_JSON)
   public List<Pokemon> listarPokemons(){
     List<Pokemon> pokemons = pokemonDao.getAllPokemons();
     System.out.println("Lista recuperada de pokemons: " + pokemons);
@@ -33,7 +34,7 @@ public class PokemonServiceRS {
   }
   
   @GET
-  @Produces(value="MediaType.APPLICATION_JSON")
+  @Produces(value= MediaType.APPLICATION_JSON)
   @Path("tipo/{idTipo}")
   public List<Pokemon> buscarPokemonsPorTipo(@PathParam("idTipo") int idTipo){
     Tipo tipo = new Tipo(idTipo);
@@ -43,7 +44,7 @@ public class PokemonServiceRS {
   }
   
   @GET
-  @Produces(value="MediaType.APPLICATION_JSON")
+  @Produces(value= MediaType.APPLICATION_JSON)
   @Path("id/{idPkmn}")
   public Pokemon buscarPokemonPorId(@PathParam("idPkmn") int idPkmn){
     Pokemon pkmn = pokemonDao.getPokemonById(idPkmn);
@@ -52,7 +53,7 @@ public class PokemonServiceRS {
   }
 
   @GET
-  @Produces(value="MediaType.APPLICATION_JSON")
+  @Produces(value= MediaType.APPLICATION_JSON)
   @Path("nro/{nroPkmn}")
   public Pokemon buscarPokemonPorNro(@PathParam("nroPkmn") int nroPkmn){
     Pokemon pkmn = pokemonDao.getPokemonByNro(nroPkmn);
@@ -61,7 +62,7 @@ public class PokemonServiceRS {
   }
   
   @GET
-  @Produces(value="MediaType.APPLICATION_JSON")
+  @Produces(value= MediaType.APPLICATION_JSON)
   @Path("nombre/{nombre}")
   public Pokemon buscarPokemonPorNombre(@PathParam("nombre") String nombre){
     Pokemon pkmn = pokemonDao.getPokemonByNombre(nombre);
@@ -70,7 +71,7 @@ public class PokemonServiceRS {
   }
   
   @GET
-  @Produces(value="MediaType.APPLICATION_JSON")
+  @Produces(value= MediaType.APPLICATION_JSON)
   public Pokemon obtenerPokemonRandom(){
     Pokemon pkmn = pokemonDao.getRandomPokemon();
     return pkmn;
@@ -78,8 +79,8 @@ public class PokemonServiceRS {
   
   
   @POST
-  @Consumes(value="MediaType.APPLICATION_JSON")
-  @Produces(value="MediaType.APPLICATION_JSON")
+  @Consumes(value= MediaType.APPLICATION_JSON)
+  @Produces(value= MediaType.APPLICATION_JSON)
   public Pokemon agregarPokemon(Pokemon pkmn){
     pokemonDao.insertPokemon(pkmn);
     System.out.println("Pokemon agregado: " + pkmn);
@@ -87,8 +88,8 @@ public class PokemonServiceRS {
   }
   
   @PUT
-  @Consumes(value="MediaType.APPLICATION_JSON")
-  @Produces(value="MediaType.APPLICATION_JSON")
+  @Consumes(value= MediaType.APPLICATION_JSON)
+  @Produces(value= MediaType.APPLICATION_JSON)
   @Path("{idPkmn}")
   public Response modificarPokemon(@PathParam("idPkmn") int idPkmn, Pokemon pkmnModificado){
     Pokemon pkmn = pokemonDao.getPokemonById(idPkmn);
@@ -102,8 +103,8 @@ public class PokemonServiceRS {
   }
   
   @PUT
-  @Consumes(value="MediaType.APPLICATION_JSON")
-  @Produces(value="MediaType.APPLICATION_JSON")
+  @Consumes(value= MediaType.APPLICATION_JSON)
+  @Produces(value= MediaType.APPLICATION_JSON)
   @Path("visibility/{idPkmn}")
   public Response cambiarVisibilidadPokemon(@PathParam("idPkmn") int idPkmn){
     Pokemon pkmn = pokemonDao.getPokemonById(idPkmn);
@@ -122,7 +123,7 @@ public class PokemonServiceRS {
   }
   
   @DELETE
-  @Produces(value="MediaType.APPLICATION_JSON")
+  @Produces(value= MediaType.APPLICATION_JSON)
   @Path("{idPkmn}")
   public Response eliminarPokemon(@PathParam("idPkmn") int idPkmn){
     Pokemon pkmn = pokemonDao.getPokemonById(idPkmn);
