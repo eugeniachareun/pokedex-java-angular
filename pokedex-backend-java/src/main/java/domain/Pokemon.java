@@ -17,6 +17,7 @@ import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -25,6 +26,7 @@ import javax.validation.constraints.Size;
  * @author euge
  */
 @Entity
+@Table(name="pokemon")
 @NamedQueries({
   @NamedQuery(name = "Pokemon.findAll", query = "SELECT p FROM Pokemon p ORDER BY p.idPkmn"),
   @NamedQuery(name = "Pokemon.findByNroPkmn", query = "SELECT p FROM Pokemon p WHERE p.nroPkmn = :nroPkmn"),
