@@ -17,7 +17,7 @@ export class DataService{
   }
 
   getAllPokemonsByTipo(tipo : Tipo){
-    let idTipo:number = tipo.idTipo;
+    let idTipo:number = tipo.idTipo!;
     return this.httpClient.get(this.urlBase + '/tipo/' + idTipo);
   }
 
