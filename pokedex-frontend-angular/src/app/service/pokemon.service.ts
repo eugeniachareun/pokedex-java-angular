@@ -17,20 +17,20 @@ export class PokemonService{
     return this.dataService.getAllPokemons();
   }
 
-  obtenerPokemonsPorTipo(tipo : Tipo){
-    return this.dataService.getAllPokemonsByTipo(tipo);
-  }
-
   obtenerPokemonPorId(idPkmn : number){
-    return this.dataService.getPokemonById(idPkmn);
+    const pkmn = this.pokemons.find(pokemon => pokemon.idPkmn == idPkmn);
+    console.log('ID pokemon encontrado: ' + pkmn?.idPkmn + pkmn?.nombre);
+    return pkmn;
   }
 
   obtenerPokemonPorNro(nroPkmn : number){
-    return this.dataService.getPokemonByNro(nroPkmn);
+    const pkmn = this.pokemons.find(pokemon => pokemon.nroPkmn == nroPkmn);
+    console.log('Nro pokemon encontrado: ' + pkmn?.nroPkmn + pkmn?.nombre);
+    return pkmn;
   }
 
   obtenerPokemonPorNombre(nombre : string){
-    return this.dataService.getPokemonByNombre(nombre);
+
   }
 
   obtenerPokemonRandom(){

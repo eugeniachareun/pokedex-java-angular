@@ -11,27 +11,8 @@ export class DataService{
 
   constructor(private httpClient : HttpClient){}
 
-  // TODO incorporar método a la funcionalidad de la página
   getAllPokemons(){
     return this.httpClient.get(this.urlBase);
-  }
-
-  getAllPokemonsByTipo(tipo : Tipo){
-    let idTipo:number = tipo.idTipo!;
-    return this.httpClient.get(this.urlBase + '/tipo/' + idTipo);
-  }
-
-  getPokemonById(idPkmn : number){
-    return this.httpClient.get(this.urlBase + '/id/' + idPkmn);
-  }
-
-  getPokemonByNro(nroPkmn : number){
-    return this.httpClient.get(this.urlBase + '/nro/' + nroPkmn);
-  }
-
-  getPokemonByNombre(nombre : string){
-    nombre = firstCharToUpperCase(nombre);
-    return this.httpClient.get(this.urlBase + '/nombre/' + nombre);
   }
 
   getRandomPokemon(){
