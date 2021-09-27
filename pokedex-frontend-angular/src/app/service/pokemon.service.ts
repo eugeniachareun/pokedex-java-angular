@@ -61,6 +61,36 @@ export class PokemonService{
     );
   }
 
+  modificarPokemon(idPkmn : number, pkmn : Pokemon){
+    console.log('Se modificará el pokemon con id: ' + idPkmn);
+    this.dataService.updatePokemon(idPkmn, pkmn);
+  }
+
+  // TODO incorporar método a la funcionalidad de la página
+  cambiarVisibilidadPokemon(idPkmn : number){
+    this.dataService.changeVisibilityPokemon(idPkmn);
+  }
+
+  eliminarPokemon(idPkmn : number){
+    console.log('Se eliminará el pokemon con id: ' + idPkmn);
+
+    //Eliminación del pokemon del arreglo general
+    const index = this.pokemons.findIndex(pokemon => pokemon.idPkmn == idPkmn);
+    this.pokemons.splice(index, 1);
+
+    //Eliminación del pokemon de los arreglos de tipos
+    if(this.pokemonsTipo1 != null){
+      const index = this.pokemonsTipo1.findIndex(pokemon => pokemon.idPkmn == idPkmn);
+      this.pokemonsTipo1.splice(index, 1);
+    }
+    if(this.pokemonsTipo2 != null){
+      const index = this.pokemonsTipo2.findIndex(pokemon => pokemon.idPkmn == idPkmn);
+      this.pokemonsTipo2.splice(index, 1);
+    }
+
+    //Eliminación del pokemon de la base de datos
+    this.dataService.deletePokemon(idPkmn);
+  }
 
 }
 

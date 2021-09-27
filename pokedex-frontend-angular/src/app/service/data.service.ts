@@ -31,7 +31,6 @@ export class DataService{
     );
   }
 
-  // TODO incorporar método a la funcionalidad de la página
   changeVisibilityPokemon(idPkmn : number){
     let url = this.urlBase + '/visibility' + idPkmn;
     return this.httpClient.get(url);
