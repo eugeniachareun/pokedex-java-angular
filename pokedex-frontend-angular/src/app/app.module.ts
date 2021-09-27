@@ -6,15 +6,21 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DataService } from './service/data.service';
 import { PokemonService } from './service/pokemon.service';
+import { PokemonComponent } from './pokemon/pokemon.component';
+import { BusquedaComponent } from './busqueda/busqueda.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PokemonComponent,
+    BusquedaComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [DataService, PokemonService],
   bootstrap: [AppComponent]
