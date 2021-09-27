@@ -6,6 +6,8 @@ import { DataService } from './data.service';
 @Injectable()
 export class PokemonService{
   pokemons : Pokemon[] = [];
+  pokemonsTipo1 : Pokemon[] = [];
+  pokemonsTipo2 : Pokemon[] = [];
 
   constructor(private dataService : DataService){}
 
@@ -17,20 +19,32 @@ export class PokemonService{
     return this.dataService.getAllPokemons();
   }
 
+  obtenerPokemonsPorTipo1(tipo : Tipo){
+    let idTipo = tipo.idTipo;
+    this.pokemonsTipo1 = this.pokemons.filter(pokemon => pokemon.tipo1?.idTipo == idTipo);
+  }
+
+  obtenerPokemonsPorTipo2(tipo : Tipo){
+    let idTipo = tipo.idTipo;
+    this.pokemonsTipo2 = this.pokemons.filter(pokemon => pokemon.tipo2?.idTipo == idTipo);
+  }
+
   obtenerPokemonPorId(idPkmn : number){
     const pkmn = this.pokemons.find(pokemon => pokemon.idPkmn == idPkmn);
-    console.log('ID pokemon encontrado: ' + pkmn?.idPkmn + pkmn?.nombre);
+    console.log('ID pokemon recuperado: ' + pkmn?.idPkmn + pkmn?.nombre);
     return pkmn;
   }
 
   obtenerPokemonPorNro(nroPkmn : number){
     const pkmn = this.pokemons.find(pokemon => pokemon.nroPkmn == nroPkmn);
-    console.log('Nro pokemon encontrado: ' + pkmn?.nroPkmn + pkmn?.nombre);
+    console.log('Nro pokemon recuperado: ' + pkmn?.nroPkmn + pkmn?.nombre);
     return pkmn;
   }
 
   obtenerPokemonPorNombre(nombre : string){
-
+    let nombreMayus = firstCharToUpperCase(nombre);
+    let pkmn = this.pokemons.find(pokemon => pokemon.nombre == nombreMayus);
+    console.log('Pokemon recuperado por nombre: ' + pkmn?.nombre);
   }
 
   obtenerPokemonRandom(){
@@ -48,4 +62,8 @@ export class PokemonService{
   }
 
 
+}
+
+function firstCharToUpperCase(string : string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
 }
