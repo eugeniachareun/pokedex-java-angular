@@ -21,8 +21,7 @@ export class BusquedaComponent implements OnInit {
     const regex = /^[0-9]*$/;
 
     if(regex.test(this.busquedaInput)){
-      const nroPkmn = parseInt(this.busquedaInput);
-      this.pkmnService.obtenerPokemonPorNro(nroPkmn);
+      this.pkmnService.obtenerPokemonPorNro(this.busquedaInput);
     } else {
       this.pkmnService.obtenerPokemonPorNombre(this.busquedaInput);
     }
