@@ -70,10 +70,29 @@ public class PokemonServiceRS {
   
   @GET
   @Produces(value = MediaType.APPLICATION_JSON)
-  @Path("/random")
+  @Path("random")
   public Pokemon obtenerPokemonRandom(){
     Pokemon pkmn = pokemonDao.getRandomPokemon();
     return pkmn;
+  }
+
+  @GET
+  @Produces(value= MediaType.APPLICATION_JSON)
+  @Path("visibility/{idPkmn}")
+  public Response cambiarVisibilidadPokemon(@PathParam("idPkmn") int idPkmn){
+    Pokemon pkmn = pokemonDao.getPokemonById(idPkmn);
+    if(pkmn != null){
+      if(pkmn.getMostrar() == 0){
+        pokemonDao.showPokemon(pkmn);
+        System.out.println("Pokemon a mostrar: " + pkmn);
+      } else{
+        pokemonDao.hidePokemon(pkmn);
+        System.out.println("Pokemon a ocultar: " + pkmn);
+      }
+      return Response.ok().entity(pkmn).build();
+    } else{
+      return Response.status(Status.NOT_FOUND).build();
+    }
   }
   
   
@@ -101,25 +120,6 @@ public class PokemonServiceRS {
     }
   }
   
-  @PUT
-  @Consumes(value= MediaType.APPLICATION_JSON)
-  @Produces(value= MediaType.APPLICATION_JSON)
-  @Path("visibility/{idPkmn}")
-  public Response cambiarVisibilidadPokemon(@PathParam("idPkmn") int idPkmn){
-    Pokemon pkmn = pokemonDao.getPokemonById(idPkmn);
-    if(pkmn != null){
-      if(pkmn.getMostrar() == 0){
-        pokemonDao.showPokemon(pkmn);
-        System.out.println("Pokemon a mostrar: " + pkmn);
-      } else{
-        pokemonDao.hidePokemon(pkmn);
-        System.out.println("Pokemon a ocultar: " + pkmn);
-      }
-      return Response.ok().entity(pkmn).build();
-    } else{
-      return Response.status(Status.NOT_FOUND).build();
-    }
-  }
   
   @DELETE
   @Produces(value= MediaType.APPLICATION_JSON)
