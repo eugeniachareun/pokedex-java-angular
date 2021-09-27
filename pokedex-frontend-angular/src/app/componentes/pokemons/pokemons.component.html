@@ -12,15 +12,16 @@
         </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let pkmn of pokemons; let i = index">
-      <td>{{pkmn.nroPkmn}}</td>
-      <td>{{pkmn.nombre}}</td>
-      <td><img src="../../../assets/spr/{{pkmn.nroPkmn}}MS.png" alt="{{pkmn.nombre}}"></td>
-      <td><img src="../../../assets/tipos/{{pkmn.tipo1!.idTipo}}.gif" alt="{{pkmn.tipo1!.tipo}}"></td>
-      <td *ngIf="pkmn.tipo2!.idTipo != 19 "><img src="../../../assets/tipos/{{pkmn.tipo2!.idTipo}}.gif" alt="{{pkmn.tipo2!.tipo}}"></td>
-      <!-- <td>poner enlace al pkmn-->
-    </tr>
-    </tbody>
+        <tr *ngFor="let pkmn of pokemons; let i = index">
+          <td>{{pkmn.nroPkmn}}</td>
+          <td>{{pkmn.nombre}}</td>
+          <td><img src="../../../assets/spr/{{pkmn.nroPkmn}}MS.png" alt="{{pkmn.nombre}}"></td>
+          <td><img src="../../../assets/tipos/{{pkmn.tipo1!.idTipo}}.gif" alt="{{pkmn.tipo1!.tipo}}"></td>
+          <td *ngIf="pkmn.tipo2!.idTipo != 19 "><img src="../../../assets/tipos/{{pkmn.tipo2!.idTipo}}.gif"
+              alt="{{pkmn.tipo2!.tipo}}"></td>
+          <!-- <td>poner enlace al pkmn-->
+        </tr>
+      </tbody>
     </table>
   </div>
 </div>
