@@ -17,7 +17,6 @@ import javax.validation.constraints.Size;
  * @author euge
  */
 @Entity
-@Table(name="tipo")
 @NamedQueries({
   @NamedQuery(name = "Tipo.findAll", query = "SELECT t FROM Tipo t"),
   @NamedQuery(name = "Tipo.findByIdTipo", query = "SELECT t FROM Tipo t WHERE t.idTipo = :idTipo"),

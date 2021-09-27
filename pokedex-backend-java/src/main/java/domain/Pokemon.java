@@ -20,7 +20,6 @@ import javax.validation.constraints.Size;
  * @author euge
  */
 @Entity
-@Table(name="pokemon")
 @NamedQueries({
   @NamedQuery(name = "Pokemon.findAll", query = "SELECT p FROM Pokemon p ORDER BY p.idPkmn"),
   @NamedQuery(name = "Pokemon.findByNroPkmn", query = "SELECT p FROM Pokemon p WHERE p.nroPkmn = :nroPkmn"),
