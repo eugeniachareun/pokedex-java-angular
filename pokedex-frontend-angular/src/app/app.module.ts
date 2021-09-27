@@ -6,15 +6,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DataService } from './service/data.service';
 import { PokemonService } from './service/pokemon.service';
-import { PokemonComponent } from './pokemon/pokemon.component';
-import { BusquedaComponent } from './busqueda/busqueda.component';
 import { FormsModule } from '@angular/forms';
+import { HeaderComponent } from './componentes/header/header.component';
+import { FooterComponent } from './componentes/footer/footer.component';
+import { RandomComponent } from './componentes/random/random.component';
+import { PokemonsComponent } from './componentes/pokemons/pokemons.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    PokemonComponent,
-    BusquedaComponent
+  AppComponent,
+  HeaderComponent,
+  FooterComponent,
+  RandomComponent,
+  PokemonsComponent
   ],
   imports: [
     BrowserModule,
