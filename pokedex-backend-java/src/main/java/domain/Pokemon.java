@@ -38,7 +38,7 @@ public class Pokemon implements Serializable {
   @Basic(optional = false)
   @NotNull
   @Column(name = "nro_pkmn")
-  private int nroPkmn;
+  private String nroPkmn;
   
   @Basic(optional = false)
   @NotNull
@@ -65,12 +65,12 @@ public class Pokemon implements Serializable {
     this.idPkmn = idPkmn;
   }
 
-  public Pokemon(int nroPkmn, String nombre) {
+  public Pokemon(String nroPkmn, String nombre) {
     this.nroPkmn = nroPkmn;
     this.nombre = nombre;
   }
   
-  public Pokemon(int nroPkmn){
+  public Pokemon(String nroPkmn){
     this.nroPkmn = nroPkmn;
   }
 
@@ -82,11 +82,11 @@ public class Pokemon implements Serializable {
     this.idPkmn = idPkmn;
   }
 
-  public int getNroPkmn() {
+  public String getNroPkmn() {
     return nroPkmn;
   }
 
-  public void setNroPkmn(int nroPkmn) {
+  public void setNroPkmn(String nroPkmn) {
     this.nroPkmn = nroPkmn;
   }
 

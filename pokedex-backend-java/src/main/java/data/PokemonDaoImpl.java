@@ -33,7 +33,7 @@ public class PokemonDaoImpl implements PokemonDao{
   }
 
   @Override
-  public Pokemon getPokemonByNro(Integer nroPkmn) {
+  public Pokemon getPokemonByNro(String nroPkmn) {
     return (Pokemon) em.createNamedQuery("Pokemon.findByNroPkmn").setParameter("nroPkmn", nroPkmn).getSingleResult();
   }
 

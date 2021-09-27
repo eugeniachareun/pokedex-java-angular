@@ -53,7 +53,7 @@ public class PokemonServiceRS {
   @GET
   @Produces(value = MediaType.APPLICATION_JSON)
   @Path("nro/{nroPkmn}")
-  public Pokemon buscarPokemonPorNro(@PathParam("nroPkmn") int nroPkmn){
+  public Pokemon buscarPokemonPorNro(@PathParam("nroPkmn") String nroPkmn){
     Pokemon pkmn = pokemonDao.getPokemonByNro(nroPkmn);
     System.out.println("Pokemon recuperado por número: " + pkmn);
     return pkmn;

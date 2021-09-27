@@ -12,7 +12,7 @@ public interface PokemonDao {
   public List<Pokemon> getAllPokemons();
   public List<Pokemon> getAllPokemonsByTipo(Integer tipo);
   public Pokemon getPokemonById(Integer idPkmn);
-  public Pokemon getPokemonByNro(Integer nroPkmn);
+  public Pokemon getPokemonByNro(String nroPkmn);
   public Pokemon getPokemonByNombre(String nombre);
   public Pokemon getRandomPokemon();
   public void insertPokemon(Pokemon pkmn);
