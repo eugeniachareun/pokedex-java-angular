@@ -35,7 +35,7 @@ export class PokemonService{
     return pkmn;
   }
 
-  obtenerPokemonPorNro(nroPkmn : number){
+  obtenerPokemonPorNro(nroPkmn : string){
     const pkmn = this.pokemons.find(pokemon => pokemon.nroPkmn == nroPkmn);
     console.log('Nro pokemon recuperado: ' + pkmn?.nroPkmn + pkmn?.nombre);
     return pkmn;
