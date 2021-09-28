@@ -1,27 +1,32 @@
-<div class="contenedor">
+<div class="contenedor text-center">
   <div class="card">
-    <h2 class="display-1 text-center">Pokedex de Kanto</h2>
-    <table class="pokemons-table">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Nombre</th>
-          <th>Sprite</th>
-          <th>Tipo 1</th>
-          <th>Tipo 2</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let pkmn of pokemons; let i = index">
-          <td>{{pkmn.nroPkmn}}</td>
-          <td>{{pkmn.nombre}}</td>
-          <td><img src="../../../assets/spr/{{pkmn.nroPkmn}}MS.png" alt="{{pkmn.nombre}}"></td>
-          <td><img src="../../../assets/tipos/{{pkmn.tipo1!.idTipo}}.gif" alt="{{pkmn.tipo1!.tipo}}"></td>
-          <td *ngIf="pkmn.tipo2!.idTipo != 19 "><img src="../../../assets/tipos/{{pkmn.tipo2!.idTipo}}.gif"
-              alt="{{pkmn.tipo2!.tipo}}"></td>
-          <!-- <td>poner enlace al pkmn-->
-        </tr>
-      </tbody>
-    </table>
+    <h2 class="display-1">Pokedex de Kanto</h2>
+    <div class="table-responsive">
+      <table id="pokemons-table" class="table margin-x-auto">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nombre</th>
+            <th>Sprite</th>
+            <th>Tipo 1</th>
+            <th>Tipo 2</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let pkmn of pokemons; let i = index">
+            <td>{{pkmn.nroPkmn}}</td>
+            <td>{{pkmn.nombre}}</td>
+            <td><img class="sprite" src="../../../assets/spr/{{pkmn.nroPkmn}}MS.png" alt="{{pkmn.nombre}}"></td>
+            <td><img class="tipo-img" src="../../../assets/tipos/{{pkmn.tipo1!.idTipo}}.gif" alt="{{pkmn.tipo1!.tipo}}"></td>
+            <td *ngIf="pkmn.tipo2!.idTipo != 19; else relleno "><img  class="tipo-img" src="../../../assets/tipos/{{pkmn.tipo2!.idTipo}}.gif"
+                alt="{{pkmn.tipo2!.tipo}}"></td>
+            <ng-template #relleno><td></td></ng-template>
+            <!-- <td>poner enlace al pkmn-->
+              <td>Ver</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
