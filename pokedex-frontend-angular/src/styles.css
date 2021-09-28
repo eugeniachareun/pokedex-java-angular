@@ -177,8 +177,8 @@ img{
 }
 
 #pokemon-card #pkmn-img{
-  max-width: 350px;
-  max-height: 350px;
+  max-width: 325px;
+  max-height: 325px;
 }
 
 #pokemon-card .detalle #tipos{
@@ -188,6 +188,7 @@ img{
 #pokemon-card .detalle #tipos img{
   max-width: 48px;
   max-height: 18px;
+  width: 100%;
 }
 
 #pokemon-card h2 span{
