@@ -12,6 +12,7 @@ import { Pokemon } from 'src/app/model/pokemon.model';
 export class PokemonComponent implements OnInit {
   nombre : string = '';
   pkmn! : Pokemon;
+  previousPkmn! : Pokemon;
   nextPkmn! : Pokemon;
 
 
@@ -27,6 +28,17 @@ export class PokemonComponent implements OnInit {
         console.log('Pokemon recuperado por nombre desde la base de datos: ' + pkmnRecuperado);
       }
     );
+
+    //Si el pokemon NO es el primero, recupera el pokemon anterior
+    if(this.pkmn.nroPkmn != '001'){
+      let idPreviousPkmn : number = this.pkmn.idPkmn! - 1;
+      this.pkmnService.recuperarPokemonPorId(idPreviousPkmn).subscribe(
+        (pkmnRecuperado : any) => {
+          this.previousPkmn = pkmnRecuperado;
+          console.log('Pokemon recuperado por el ID desde la base de datos: ' + pkmnRecuperado);
+        }
+      );
+    }
 
     //Si el pokemon NO es el último, recupera el pokemon siguiente
     if(this.pkmn.nroPkmn != '151'){
