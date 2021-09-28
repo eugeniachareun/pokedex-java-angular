@@ -20,7 +20,7 @@ export class DataService{
   }
 
   getPokemonByNombre(nombre : string){
-    return this.httpClient.get(this.urlBase + '/' + nombre);
+    return this.httpClient.get(this.urlBase + '/nombre/' + nombre);
   }
 
   insertPokemon(pkmn : Pokemon){
