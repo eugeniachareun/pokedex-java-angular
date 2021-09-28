@@ -180,11 +180,11 @@ img{
   color:#A4A4A4;
 }
 
-#pokemon-card #header #botonera{
+#pokemon-card #header #botonera-edicion{
   text-align:right;
 }
 
-#pokemon-card #header #botonera a{
+#pokemon-card #header #botonera-edicion a{
   margin-left: 10px;
   text-decoration: none;
 }
@@ -205,10 +205,13 @@ img{
 }
 
 
-
 #pokemon-card #detalle img{
   max-width: 48px;
   max-height: 18px;
+}
+
+#pokemon-card #botonera-nav a{
+  text-decoration: none;
 }
 
 .nav {
@@ -284,6 +287,14 @@ form .input:focus{
 
 .btn-negro:hover{
   background: #535252 ;
+}
+
+.btn-gris{
+  background: #A4A4A4;
+}
+
+.btn-gris:hover{
+  background: #b9b8b8;
 }
 
 .btn-ancho{
