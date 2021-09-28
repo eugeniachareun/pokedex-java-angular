@@ -23,6 +23,10 @@ export class DataService{
     return this.httpClient.get(this.urlBase + '/nombre/' + nombre);
   }
 
+  getPokemonById(idPkmn : number){
+    return this.httpClient.get(this.urlBase + '/id/' + idPkmn);
+  }
+
   insertPokemon(pkmn : Pokemon){
     return this.httpClient.post(this.urlBase, pkmn);
   }

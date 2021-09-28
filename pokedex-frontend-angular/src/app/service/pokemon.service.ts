@@ -35,6 +35,11 @@ export class PokemonService{
     return pkmn;
   }
 
+  recuperarPokemonPorId(idPkmn : number){
+    let pkmn = this.dataService.getPokemonById(idPkmn);
+    return pkmn;
+  }
+
   obtenerPokemonPorNro(nroPkmn : string){
     const pkmn = this.pokemons.find(pokemon => pokemon.nroPkmn == nroPkmn);
     console.log('Nro pokemon recuperado: ' + pkmn?.nroPkmn + pkmn?.nombre);
