@@ -257,6 +257,25 @@ form .input:focus{
 
 
 /* ====================
+	*   TABLAS   *
+==================== */
+table.pokemons-table{
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+
+table.pokemons-table thead{
+  padding: 0 5px;
+  text-align: center;
+  background-color: var(--rojo);
+  color:#fff;
+
+}
+
+
+
+
+/* ====================
 	*   FUENTES   *
 ==================== */
 h1,
