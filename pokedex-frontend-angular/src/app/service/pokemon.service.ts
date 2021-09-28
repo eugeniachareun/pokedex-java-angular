@@ -47,6 +47,11 @@ export class PokemonService{
     console.log('Pokemon recuperado por nombre: ' + pkmn?.nombre);
   }
 
+  recuperarPokemonPorNombre(nombre : string){
+    let pkmn = this.dataService.getPokemonByNombre(nombre);
+    return pkmn;
+  }
+
   obtenerPokemonRandom(){
     return this.dataService.getRandomPokemon();
   }

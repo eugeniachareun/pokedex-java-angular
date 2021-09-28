@@ -19,6 +19,10 @@ export class DataService{
     return this.httpClient.get(this.urlBase + '/random');
   }
 
+  getPokemonByNombre(nombre : string){
+    return this.httpClient.get(this.urlBase + '/' + nombre);
+  }
+
   insertPokemon(pkmn : Pokemon){
     return this.httpClient.post(this.urlBase, pkmn);
   }
