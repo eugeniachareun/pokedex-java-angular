@@ -1,1 +1,16 @@
-<p>pokemon works!</p>
+<main class="contenedor">
+  <div class="card text-center" id="pokemon-card">
+    <h2 class="display-2 med-display-2 peq-display-2 span-2">{{pkmn.nombre}} <span>Nº {{pkmn.nroPkmn}}</span></h2>
+    <div class="grid col-2">
+      <img id="pkmn-img" class="margin-x-auto" src="../../../assets/img/{{pkmn.nroPkmn}}{{pkmn.nombre}}.png" alt="{{pkmn.nombre}}">
+      <div class="detalle">
+        <p class="text-justify">{{pkmn.descripcion}}</p>
+        <div id="tipos" class="text-left">
+          <h3>Tipos:</h3>
+          <img src="../../../assets/tipos/{{pkmn.tipo1!.idTipo}}.gif" alt="{{pkmn.tipo1!.tipo}}">
+          <img *ngIf="pkmn.tipo2!.idTipo != null" src="../../../assets/tipos/{{pkmn.tipo2!.idTipo}}.gif" alt="{{pkmn.tipo2!.tipo}}">
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
