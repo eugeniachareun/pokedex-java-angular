@@ -1,14 +1,22 @@
 <main class="contenedor">
   <div class="card text-center" id="pokemon-card">
-    <h2 class="display-2 med-display-2 peq-display-2 span-2">{{pkmn.nombre}} <span>Nº {{pkmn.nroPkmn}}</span></h2>
+    <div id="header">
+      <h2 class="display-2 med-display-2 peq-display-2 span-2">{{pkmn.nombre}} <span>Nº {{pkmn.nroPkmn}}</span></h2>
+      <div id="botonera">
+        <a href="#" class="boton btn-peq"><i class="fas fa-cog"></i> Editar</a>
+        <a href="#" class="boton btn-negro btn-peq"><i class="fas fa-trash"></i> Eliminar</a>
+      </div>
+    </div>
     <div class="grid col-2">
-      <img id="pkmn-img" class="margin-x-auto" src="../../../assets/img/{{pkmn.nroPkmn}}{{pkmn.nombre}}.png" alt="{{pkmn.nombre}}">
+      <img id="pkmn-img" class="margin-x-auto" src="../../../assets/img/{{pkmn.nroPkmn}}{{pkmn.nombre}}.png"
+        alt="{{pkmn.nombre}}">
       <div class="detalle">
         <p class="text-justify">{{pkmn.descripcion}}</p>
         <div id="tipos" class="text-center">
           <h3>Tipo:</h3>
           <img src="../../../assets/tipos/{{pkmn.tipo1!.idTipo}}.gif" alt="{{pkmn.tipo1!.tipo}}">
-          <span *ngIf="pkmn.tipo2!.idTipo != 19; else relleno "><img src="../../../assets/tipos/{{pkmn.tipo2!.idTipo}}.gif" alt="{{pkmn.tipo2!.tipo}}"></span>
+          <span *ngIf="pkmn.tipo2!.idTipo != 19; else relleno "><img
+              src="../../../assets/tipos/{{pkmn.tipo2!.idTipo}}.gif" alt="{{pkmn.tipo2!.tipo}}"></span>
           <ng-template #relleno><span></span></ng-template>
         </div>
       </div>

@@ -176,6 +176,19 @@ img{
   box-shadow: 0px 0px 30px rgba(221,221,221, 0.3);
 }
 
+#pokemon-card #header h2 span{
+  color:#A4A4A4;
+}
+
+#pokemon-card #header #botonera{
+  text-align:right;
+}
+
+#pokemon-card #header #botonera a{
+  margin-left: 10px;
+  text-decoration: none;
+}
+
 #pokemon-card #pkmn-img{
   max-width: 325px;
   max-height: 325px;
@@ -191,9 +204,7 @@ img{
   width: 100%;
 }
 
-#pokemon-card h2 span{
-  color:#A4A4A4;
-}
+
 
 #pokemon-card #detalle img{
   max-width: 48px;
@@ -277,6 +288,11 @@ form .input:focus{
 
 .btn-ancho{
   width: 95%;
+}
+
+.btn-peq{
+  padding: 5px 10px;
+  font-size:medium;
 }
 
 
