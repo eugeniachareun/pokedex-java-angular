@@ -21,7 +21,7 @@
         </div>
         <!-- TODO agregar enlaces!!!-->
         <div id="botonera-nav" class="grid col-2">
-         <a href="#" *ngIf="pkmn.nroPkmn != '001'" class="boton btn-gris span-1" id="previousBtn" >
+         <a href="#" *ngIf="pkmn.nroPkmn != '001'; else relleno" class="boton btn-gris span-1" id="previousBtn" >
             <i class="fas fa-angle-double-left"></i> {{previousPkmn.nroPkmn!}} {{previousPkmn.nombre!}}
           </a>
           <a href="#" *ngIf="pkmn.nroPkmn != '151'" class="boton btn-gris span-1" id="nextBtn">
