@@ -2,15 +2,15 @@
   <div class="card text-center" id="pokemon-card">
     <div id="header">
       <h2 class="display-2 med-display-2 peq-display-2 span-2">{{pkmn.nombre!}} <span>Nº {{pkmn.nroPkmn!}}</span></h2>
-      <div id="botonera-edicion">
-        <a href="#" class="boton btn-peq"><i class="fas fa-cog"></i> Editar</a>
-        <a href="#" class="boton btn-negro btn-peq"><i class="fas fa-trash"></i> Eliminar</a>
-      </div>
     </div>
-    <div class="grid col-2">
+    <div class="grid col-2 peq-col-1">
       <img id="pkmn-img" class="margin-x-auto" src="../../../assets/img/{{pkmn.nroPkmn!}}{{pkmn.nombre!}}.png"
         alt="{{pkmn.nombre}}">
       <div class="detalle">
+        <div id="botonera-edicion">
+          <a href="#" class="boton btn-peq"><i class="fas fa-cog"></i> Editar</a>
+          <a href="#" class="boton btn-negro btn-peq"><i class="fas fa-trash"></i> Eliminar</a>
+        </div>
         <p class="text-justify">{{pkmn.descripcion}}</p>
         <div id="tipos" class="text-center">
           <h3>Tipo:</h3>
@@ -19,12 +19,13 @@
               src="../../../assets/tipos/{{pkmn.tipo2!.idTipo!}}.gif" alt="{{pkmn.tipo2!.tipo!}}"></span>
           <ng-template #relleno><span></span></ng-template>
         </div>
-        <div id="botonera-nav">
-          <a href="#" *ngIf="pkmn.nroPkmn != '001'" class="boton btn-gris" id="previousBtn" >
-            <i class="fas fa-angle-left"></i> {{previousPkmn.nroPkmn!}} {{previousPkmn.nombre!}}
+        // TODO agregar enlaces!!!
+        <div id="botonera-nav" class="grid col-2">
+         <a href="#" *ngIf="pkmn.nroPkmn != '001'" class="boton btn-gris span-1" id="previousBtn" >
+            <i class="fas fa-angle-double-left"></i> {{previousPkmn.nroPkmn!}} {{previousPkmn.nombre!}}
           </a>
-          <a href="#" *ngIf="pkmn.nroPkmn != '151'" class="boton btn-gris" id="nextBtn">
-            <i class="fas fa-angle-right"></i> {{nextPkmn.nroPkmn!}} {{nextPkmn.nombre!}}
+          <a href="#" *ngIf="pkmn.nroPkmn != '151'" class="boton btn-gris span-1" id="nextBtn">
+            <i class="fas fa-angle-double-right"></i> {{nextPkmn.nroPkmn!}} {{nextPkmn.nombre!}}
           </a>
         </div>
       </div>
