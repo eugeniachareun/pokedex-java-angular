@@ -55,7 +55,7 @@ export class PokemonService{
 
   obtenerPokemonPorNombre(nombre : string){
     let nombreMayus = firstCharToUpperCase(nombre);
-    let pkmn = this.pokemons.find(pokemon => pokemon.nombre == nombreMayus);
+    let pkmn = this.pokemons.find(pokemon => pokemon.nombre === nombreMayus);
     console.log('Pokemon recuperado por nombre: ' + pkmn?.nombre);
     return pkmn;
   }
@@ -110,6 +110,17 @@ export class PokemonService{
     this.dataService.deletePokemon(idPkmn);
   }
 
+  zeroFill(nroPkmn : number):string{
+    let zeroFilled : string;
+      if(nroPkmn < 10){
+        zeroFilled = '00' + nroPkmn;
+      } else if(nroPkmn >= 10 && nroPkmn < 100 ){
+        zeroFilled = '0' + nroPkmn;
+      } else{
+        zeroFilled = nroPkmn + '';
+      }
+    return zeroFilled;
+  }
 }
 
 function firstCharToUpperCase(string : string) {
