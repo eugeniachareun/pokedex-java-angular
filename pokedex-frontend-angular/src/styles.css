@@ -194,6 +194,10 @@ img{
   max-height: 325px;
 }
 
+#pokemon-card .detalle{
+  margin-top: 15px;
+}
+
 #pokemon-card .detalle #tipos{
   margin-top: 40px;
 }
@@ -205,13 +209,25 @@ img{
 }
 
 
-#pokemon-card #detalle img{
+#pokemon-card .detalle img{
   max-width: 48px;
   max-height: 18px;
 }
 
+#pokemon-card #botonera-nav{
+  display: flex;
+  align-content:space-around;
+  flex-wrap:wrap;
+  margin-top:10px;
+}
+
 #pokemon-card #botonera-nav a{
+  margin-top: 15px;
   text-decoration: none;
+}
+
+#pokemon-card #botonera-nav #previousBtn{
+  margin-right: 50%
 }
 
 .nav {
