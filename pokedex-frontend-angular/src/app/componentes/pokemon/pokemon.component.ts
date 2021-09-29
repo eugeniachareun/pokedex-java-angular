@@ -40,7 +40,7 @@ export class PokemonComponent implements OnInit {
   recuperarPreviousPkmn(){
     //Si el pokemon NO es el primero, recupera el pokemon anterior
       const nroPreviousPkmn : number = parseInt(this.pkmn.nroPkmn!) - 1;
-      const strPreviousPkmn : string = this.zeroFill(nroPreviousPkmn);
+      const strPreviousPkmn : string = this.pkmnService.zeroFill(nroPreviousPkmn);
       this.pkmnService.recuperarPokemonPorNro(strPreviousPkmn).subscribe(
           (pkmnRecuperado : any) => {
             this.previousPkmn = pkmnRecuperado;
@@ -52,7 +52,7 @@ export class PokemonComponent implements OnInit {
   recuperarNextPkmn(){
     //Si el pokemon NO es el último, recupera el pokemon siguiente
       const nroNextPkmn : number = parseInt(this.pkmn.nroPkmn!) + 1;
-      const strNextPkmn : string = this.zeroFill(nroNextPkmn);
+      const strNextPkmn : string = this.pkmnService.zeroFill(nroNextPkmn);
       this.pkmnService.recuperarPokemonPorNro(strNextPkmn).subscribe(
         (pkmnRecuperado : Pokemon) => {
           this.nextPkmn = pkmnRecuperado;
@@ -60,16 +60,4 @@ export class PokemonComponent implements OnInit {
         }
       );
     }
-
-  zeroFill(nroPkmn : number):string{
-    let zeroFilled : string;
-      if(nroPkmn < 10){
-        zeroFilled = '00' + nroPkmn;
-      } else if(nroPkmn >= 10 && nroPkmn < 100 ){
-        zeroFilled = '0' + nroPkmn;
-      } else{
-        zeroFilled = nroPkmn + '';
-      }
-    return zeroFilled;
-  }
 }
