@@ -1,3 +1,4 @@
+import { BusquedaComponent } from './componentes/busqueda/busqueda.component';
 import { PokemonComponent } from './componentes/pokemon/pokemon.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -16,6 +17,7 @@ import { PokemonsComponent } from './componentes/pokemons/pokemons.component';
 @NgModule({
   declarations: [
   AppComponent,
+  BusquedaComponent,
   HeaderComponent,
   FooterComponent,
   RandomComponent,
