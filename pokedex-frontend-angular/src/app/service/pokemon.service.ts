@@ -57,6 +57,7 @@ export class PokemonService{
     let nombreMayus = firstCharToUpperCase(nombre);
     let pkmn = this.pokemons.find(pokemon => pokemon.nombre == nombreMayus);
     console.log('Pokemon recuperado por nombre: ' + pkmn?.nombre);
+    return pkmn;
   }
 
   recuperarPokemonPorNombre(nombre : string){
