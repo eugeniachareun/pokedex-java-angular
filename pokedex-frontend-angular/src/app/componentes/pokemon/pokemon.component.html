@@ -20,7 +20,8 @@
           <ng-template #relleno><span></span></ng-template>
         </div>
         <div id="botonera-nav" class="grid col-2">
-         <a href="/{{previousPkmn.nombre}}" *ngIf="pkmn.nroPkmn != '001'; else relleno" class="boton btn-gris span-1" id="previousBtn" >
+          <a href="/{{previousPkmn.nombre}}" *ngIf="pkmn.nroPkmn != '001'; else relleno" class="boton btn-gris span-1"
+            id="previousBtn">
             <i class="fas fa-angle-double-left"></i> {{previousPkmn.nroPkmn!}} {{previousPkmn.nombre!}}
           </a>
           <a href="/{{nextPkmn.nombre!}}" *ngIf="pkmn.nroPkmn != '151'" class="boton btn-gris span-1" id="nextBtn">
@@ -38,68 +39,64 @@
       <a (click)="ocultarModal()" class="boton">x</a>
     </div>
     <h2 class="display-3 text-center">Modificar registro de {{pkmn.nombre}}</h2>
-    <form action="">
-      <div class="form-group">
-        <label for="nombre">Nombre: </label>
-        <input type="text" name="nombre" value="{{pkmn.nombre}}">
-      </div>
-      <div class="form-group">
-        <label for="nroPkmn">Número: </label>
-        <input type="text" name="nroPkmn" value="{{pkmn.nroPkmn}}">
-      </div>
-      <div class="form-group">
-        <label for="tipo1">Primer tipo: </label>
-        <select name="tipo1" id="tipo1" size="6">
-          <option value="none" selected disabled hidden> --Seleccione un tipo </option>
-          <option value="1">Acero</option>
-          <option value="2">Agua</option>
-          <option value="3">Bicho</option>
-          <option value="4">Dragón</option>
-          <option value="5">Eléctrico</option>
-          <option value="6">Fantasma</option>
-          <option value="7">Fuego</option>
-          <option value="8">Hada</option>
-          <option value="9">Hielo</option>
-          <option value="10">Lucha</option>
-          <option value="11">Normal</option>
-          <option value="12">Planta</option>
-          <option value="13">Psíquico</option>
-          <option value="14">Roca</option>
-          <option value="15">Siniestro</option>
-          <option value="16">Tierra</option>
-          <option value="17">Veneno</option>
-          <option value="18">Volador</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="tipo2">Segundo tipo: </label>
-        <select name="tipo2" id="tipo2" size="6">
-          <option value="none" selected disabled hidden> --Seleccione un tipo </option>
-          <option value="19">No tiene segundo tipo</option>
-          <option value="1">Acero</option>
-          <option value="2">Agua</option>
-          <option value="3">Bicho</option>
-          <option value="4">Dragón</option>
-          <option value="5">Eléctrico</option>
-          <option value="6">Fantasma</option>
-          <option value="7">Fuego</option>
-          <option value="8">Hada</option>
-          <option value="9">Hielo</option>
-          <option value="10">Lucha</option>
-          <option value="11">Normal</option>
-          <option value="12">Planta</option>
-          <option value="13">Psíquico</option>
-          <option value="14">Roca</option>
-          <option value="15">Siniestro</option>
-          <option value="16">Tierra</option>
-          <option value="17">Veneno</option>
-          <option value="18">Volador</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="descripcion">Descripción: </label>
-        <textarea name="descripcion" id="descripcion" cols="20" rows="20" placeholder="Descripción del pokemón"></textarea>
-      </div>
+    <form action="" class="grid col-2 gap-50">
+      <label for="nombre" class="text-center">Nombre: </label>
+      <input type="text" name="nombre" value="{{pkmn.nombre}}">
+
+      <label for="nroPkmn" class="text-center">Número: </label>
+      <input type="text" name="nroPkmn" value="{{pkmn.nroPkmn}}">
+
+      <label for="tipo1" class="text-center">Primer tipo: </label>
+      <select name="tipo1" id="tipo1" size="6">
+        <option value="none" selected disabled> --Seleccione un tipo-- </option>
+        <option value="1">Acero</option>
+        <option value="2">Agua</option>
+        <option value="3">Bicho</option>
+        <option value="4">Dragón</option>
+        <option value="5">Eléctrico</option>
+        <option value="6">Fantasma</option>
+        <option value="7">Fuego</option>
+        <option value="8">Hada</option>
+        <option value="9">Hielo</option>
+        <option value="10">Lucha</option>
+        <option value="11">Normal</option>
+        <option value="12">Planta</option>
+        <option value="13">Psíquico</option>
+        <option value="14">Roca</option>
+        <option value="15">Siniestro</option>
+        <option value="16">Tierra</option>
+        <option value="17">Veneno</option>
+        <option value="18">Volador</option>
+      </select>
+
+      <label for="tipo2" class="text-center">Segundo tipo: </label>
+      <select name="tipo2" id="tipo2" size="6">
+        <option value="none" selected disabled> --Seleccione un tipo-- </option>
+        <option value="19">No tiene segundo tipo</option>
+        <option value="1">Acero</option>
+        <option value="2">Agua</option>
+        <option value="3">Bicho</option>
+        <option value="4">Dragón</option>
+        <option value="5">Eléctrico</option>
+        <option value="6">Fantasma</option>
+        <option value="7">Fuego</option>
+        <option value="8">Hada</option>
+        <option value="9">Hielo</option>
+        <option value="10">Lucha</option>
+        <option value="11">Normal</option>
+        <option value="12">Planta</option>
+        <option value="13">Psíquico</option>
+        <option value="14">Roca</option>
+        <option value="15">Siniestro</option>
+        <option value="16">Tierra</option>
+        <option value="17">Veneno</option>
+        <option value="18">Volador</option>
+      </select>
+
+      <label for="descripcion" class="text-center">Descripción: </label>
+      <textarea name="descripcion" id="descripcion" cols="10" rows="10"
+        placeholder="Descripción del pokemon"></textarea>
+
     </form>
   </div>
 </div>

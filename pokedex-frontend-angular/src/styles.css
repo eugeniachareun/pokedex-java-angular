@@ -296,14 +296,6 @@ form .input:focus{
   outline: none;
 }
 
-.form-group{
-  display: flex;
-  flex: 0 0 auto;
-  flex-flow: row wrap;
-  align-items: center;
-  margin-bottom: 0;
-}
-
 .boton{
   background: var(--rojo);
   border: none;
@@ -505,3 +497,5 @@ h6{
 .text-justify{text-align: justify;}
 
 .width-100{ width: 100%;}
+
+.gap-50{gap: 50px;}
