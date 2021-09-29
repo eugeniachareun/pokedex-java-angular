@@ -1,10 +1,10 @@
 <div class="contenedor">
   <div class="card">
-    <form class="grid no-gap text-center">
-      <input type="text" class="input" placeholder="Nombre o número del pokemon" ([ngModel])="busquedaInput" required>
-      <a href="#" class="boton btn-ancho" (click)="onBuscar()">
+    <form class="grid no-gap text-center" #f="ngForm" (ngSubmit)="f.form.valid && onBuscar()">
+      <input type="text" name="busqueda" class="input" placeholder="Nombre o número del pokemon" [(ngModel)]="busquedaInput" required>
+      <button type="submit" class="boton btn-ancho">
         <i class="fas fa-search"></i>
-      </a>
+      </button>
     </form>
   </div>
 </div>
