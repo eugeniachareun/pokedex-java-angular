@@ -286,6 +286,7 @@ form .input:focus{
   border-radius: 3px;
   text-align: center;
   transition: .3s ease all;
+  text-decoration: none;
 }
 
 .boton:hover{
@@ -323,7 +324,7 @@ form .input:focus{
 ==================== */
 .table-responsive {
   min-height: .01%;
-  overflow-x: auto;
+  overflow-x:scroll;
 }
 
 @media screen and (max-width: 767px) {
@@ -358,6 +359,15 @@ form .input:focus{
   color:#fff;
 }
 
+#pokemons-table thead tr th:last-of-type{
+  background: var(--blanco);
+}
+
+#pokemons-table tbody tr td:last-of-type{
+  text-align: left;
+  margin-left: 10px;
+}
+
 #pokemons-table .sprite{
   max-width: 40px;
   max-height: 40px;
@@ -368,6 +378,10 @@ form .input:focus{
   max-height: 18px;
 }
 
+#pokemons-table a {
+ font-size: 14px;
+ padding: 5px 10px;
+}
 
 
 /* ====================
