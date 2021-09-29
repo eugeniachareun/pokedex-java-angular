@@ -253,6 +253,26 @@ img{
   background: #f17a82;
 }
 
+.modal{
+  background-color: rgba(0,0,0,.8);
+  position:fixed;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  overflow-x: scroll
+}
+
+.modal-contenido{
+  background-color:var(--blanco);
+  width:75%;
+  max-width: var(--ancho-contenedor);
+  padding: 10px 20px;
+  margin: auto;
+  position: relative;
+  ;
+}
+
 
 /* ====================
 	*   FORMULARIOS   *
@@ -274,6 +294,14 @@ form .input{
 form .input:focus{
   border: 1px solid var(--negro);
   outline: none;
+}
+
+.form-group{
+  display: flex;
+  flex: 0 0 auto;
+  flex-flow: row wrap;
+  align-items: center;
+  margin-bottom: 0;
 }
 
 .boton{
@@ -475,3 +503,5 @@ h6{
 .text-left {text-align: left;}
 .text-right {text-align: right;}
 .text-justify{text-align: justify;}
+
+.width-100{ width: 100%;}

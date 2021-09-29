@@ -14,6 +14,7 @@ export class PokemonComponent implements OnInit {
   pkmn! : Pokemon;
   previousPkmn! : Pokemon;
   nextPkmn! : Pokemon;
+  visibilidadModal : boolean = false;
 
 
   constructor(private pkmnService : PokemonService,
@@ -60,4 +61,13 @@ export class PokemonComponent implements OnInit {
         }
       );
     }
+
+  mostrarModal(){
+    this.visibilidadModal = true;
+  }
+
+  ocultarModal(){
+    this.visibilidadModal = false;
+  }
+
 }
