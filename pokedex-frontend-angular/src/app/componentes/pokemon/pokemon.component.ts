@@ -26,30 +26,37 @@ export class PokemonComponent implements OnInit {
       (pkmnRecuperado : any) => {
         this.pkmn = pkmnRecuperado;
         console.log('Pokemon recuperado por nombre desde la base de datos: ' + pkmnRecuperado);
+
+        if(this.pkmn.nroPkmn != '001'){
+          this.recuperarPreviousPkmn();
+        }
+        if(this.pkmn.nroPkmn! != '151'){
+          this.recuperarNextPkmn();
+        }
       }
     );
+  }
 
+  recuperarPreviousPkmn(){
     //Si el pokemon NO es el primero, recupera el pokemon anterior
-    if(this.pkmn.nroPkmn != '001'){
       let idPreviousPkmn : number = this.pkmn.idPkmn! - 1;
       this.pkmnService.recuperarPokemonPorId(idPreviousPkmn).subscribe(
-        (pkmnRecuperado : any) => {
-          this.previousPkmn = pkmnRecuperado;
-          console.log('Pokemon recuperado por el ID desde la base de datos: ' + pkmnRecuperado);
-        }
-      );
-    }
+          (pkmnRecuperado : any) => {
+            this.previousPkmn = pkmnRecuperado;
+            console.log('Pokemon recuperado por el ID desde la base de datos: ' + pkmnRecuperado);
+          }
+        );
+      }
 
+  recuperarNextPkmn(){
     //Si el pokemon NO es el último, recupera el pokemon siguiente
-    if(this.pkmn.nroPkmn != '151'){
       let idNextPkmn : number = this.pkmn.idPkmn! + 1;
       this.pkmnService.recuperarPokemonPorId(idNextPkmn).subscribe(
-        (pkmnRecuperado : any) => {
+        (pkmnRecuperado : Pokemon) => {
           this.nextPkmn = pkmnRecuperado;
           console.log('Pokemon recuperado por el ID desde la base de datos: ' + pkmnRecuperado);
         }
       );
     }
-  }
 
 }
