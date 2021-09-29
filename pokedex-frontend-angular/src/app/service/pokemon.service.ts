@@ -19,6 +19,8 @@ export class PokemonService{
     return this.dataService.getAllPokemons();
   }
 
+  //TODO ver congruencia const y let
+
   obtenerPokemonsPorTipo1(tipo : Tipo){
     let idTipo = tipo.idTipo;
     this.pokemonsTipo1 = this.pokemons.filter(pokemon => pokemon.tipo1?.idTipo == idTipo);
@@ -43,6 +45,11 @@ export class PokemonService{
   obtenerPokemonPorNro(nroPkmn : string){
     const pkmn = this.pokemons.find(pokemon => pokemon.nroPkmn == nroPkmn);
     console.log('Nro pokemon recuperado: ' + pkmn?.nroPkmn + pkmn?.nombre);
+    return pkmn;
+  }
+
+  recuperarPokemonPorNro(nroPkmn : string){
+    const pkmn = this.dataService.getPokemonByNro(nroPkmn);
     return pkmn;
   }
 
