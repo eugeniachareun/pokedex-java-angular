@@ -39,15 +39,15 @@
       <a (click)="ocultarModal()" class="boton">x</a>
     </div>
     <h2 class="display-3 text-center">Modificar registro de {{pkmn.nombre}}</h2>
-    <form action="" class="grid col-4 gap-50">
+    <form #f="ngForm" (ngSubmit)="f.form.valid && editarPokemon(f)" class="grid col-4 gap-50">
       <label for="nombre" class="span-1 text-center">Nombre: </label>
-      <input type="text" class="span-3" name="nombre" value="{{pkmn.nombre}}">
+      <input type="text" class="span-3" name="nombre" value="{{pkmn.nombre}}" required>
 
       <label for="nroPkmn" class="span-1 text-center">Número: </label>
-      <input type="text" name="nroPkmn" class="span-3" value="{{pkmn.nroPkmn}}">
+      <input type="text" name="nroPkmn" class="span-3" value="{{pkmn.nroPkmn}}" required>
 
       <label for="tipo1" class="span-1 text-center">Primer tipo: </label>
-      <select name="tipo1" id="tipo1" size="6" class="span-3">
+      <select name="tipo1" id="tipo1" size="6" class="span-3" required>
         <option value="none" selected disabled> --Seleccione un tipo-- </option>
         <option value="1">Acero</option>
         <option value="2">Agua</option>
@@ -70,7 +70,7 @@
       </select>
 
       <label for="tipo2" class="span-1 text-center">Segundo tipo: </label>
-      <select name="tipo2" id="tipo2" size="6" class="span-3">
+      <select name="tipo2" id="tipo2" size="6" class="span-3" required>
         <option value="none" selected disabled> --Seleccione un tipo-- </option>
         <option value="19">No tiene segundo tipo</option>
         <option value="1">Acero</option>
@@ -95,8 +95,11 @@
 
       <label for="descripcion" class="span-1 text-center">Descripción: </label>
       <textarea name="descripcion" id="descripcion" cols="5" rows="5" class="span-3"
-        placeholder="Descripción del pokemon"></textarea>
+        placeholder="Descripción del pokemon" required></textarea>
 
+      <button type="submit" class="boton">
+        <i class="fas fa-disk"></i> Guardar pokemon
+      </button>
     </form>
   </div>
 </div>
