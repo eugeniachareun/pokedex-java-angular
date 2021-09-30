@@ -41,61 +41,33 @@
     <h2 class="display-3 text-center">Modificar registro de {{pkmn.nombre}}</h2>
     <form #f="ngForm" (ngSubmit)="f.form.valid && guardarPokemon()" class="grid col-4 gap-50">
       <label for="nombre" class="span-1 text-center">Nombre: </label>
-      <input type="text" class="span-3" name="nombre" placeholder="{{pkmn.nombre}}" required [(ngModel)]="nombrePkmnForm">
+      <input type="text" class="span-3" name="nombre"
+            required [(ngModel)]="pkmn.nombre">
 
       <label for="nroPkmn" class="span-1 text-center">Número: </label>
-      <input type="text" name="nroPkmn" class="span-3" placeholder="{{pkmn.nroPkmn}}" required [(ngModel)]="nroPkmnForm">
+      <input type="text" name="nroPkmn" class="span-3"
+            required [(ngModel)]="pkmn.nroPkmn">
 
       <label for="tipo1" class="span-1 text-center">Primer tipo: </label>
-      <select name="tipo1" id="tipo1" size="6" class="span-3" required [(ngModel)]="tipo1PkmnForm">
-        <option value="none" selected disabled> --Seleccione un tipo-- </option>
-        <option value="1">Acero</option>
-        <option value="2">Agua</option>
-        <option value="3">Bicho</option>
-        <option value="4">Dragón</option>
-        <option value="5">Eléctrico</option>
-        <option value="6">Fantasma</option>
-        <option value="7">Fuego</option>
-        <option value="8">Hada</option>
-        <option value="9">Hielo</option>
-        <option value="10">Lucha</option>
-        <option value="11">Normal</option>
-        <option value="12">Planta</option>
-        <option value="13">Psíquico</option>
-        <option value="14">Roca</option>
-        <option value="15">Siniestro</option>
-        <option value="16">Tierra</option>
-        <option value="17">Veneno</option>
-        <option value="18">Volador</option>
+      <select name="tipo1" id="tipo1" size="5" class="span-3" required [(ngModel)]="tipo1PkmnForm">
+        <option value="none" disabled> --Seleccione un tipo-- </option>
+        <option *ngFor="let tipo of arrayTipos | slice:0:18"
+                [ngValue]="tipo.idTipo"
+                [selected] ="pkmn.tipo1!.idTipo == tipo.idTipo"> {{tipo.tipo}} </option>
       </select>
 
       <label for="tipo2" class="span-1 text-center">Segundo tipo: </label>
-      <select name="tipo2" id="tipo2" size="6" class="span-3" required [(ngModel)]="tipo2PkmnForm" >
-        <option value="none" selected disabled> --Seleccione un tipo-- </option>
-        <option value="19">No tiene segundo tipo</option>
-        <option value="1">Acero</option>
-        <option value="2">Agua</option>
-        <option value="3">Bicho</option>
-        <option value="4">Dragón</option>
-        <option value="5">Eléctrico</option>
-        <option value="6">Fantasma</option>
-        <option value="7">Fuego</option>
-        <option value="8">Hada</option>
-        <option value="9">Hielo</option>
-        <option value="10">Lucha</option>
-        <option value="11">Normal</option>
-        <option value="12">Planta</option>
-        <option value="13">Psíquico</option>
-        <option value="14">Roca</option>
-        <option value="15">Siniestro</option>
-        <option value="16">Tierra</option>
-        <option value="17">Veneno</option>
-        <option value="18">Volador</option>
+      <select name="tipo2" id="tipo2" size="5" class="span-3" required [(ngModel)]="tipo2PkmnForm">
+        <option value="none" disabled> --Seleccione un tipo-- </option>
+        <option *ngFor="let tipo of arrayTipos"
+                [ngValue]="tipo.idTipo"
+                [selected] ="pkmn.tipo2!.idTipo == tipo.idTipo"> {{tipo.tipo}} </option>
       </select>
 
       <label for="descripcion" class="span-1 text-center">Descripción: </label>
       <textarea name="descripcion" id="descripcion" cols="5" rows="5" class="span-3"
-        placeholder="Descripción del pokemon" required [(ngModel)]="descripcionPkmnForm" ></textarea>
+                placeholder="Descripción del pokemon" value="{{pkmn.descripcion}}"
+                required [(ngModel)]="pkmn.descripcion" > </textarea>
 
       <button type="submit" class="boton">
         <i class="fas fa-disk"></i> Guardar pokemon
