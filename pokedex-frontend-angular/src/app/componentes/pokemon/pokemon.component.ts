@@ -2,6 +2,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { PokemonService } from 'src/app/service/pokemon.service';
 import { Pokemon } from 'src/app/model/pokemon.model';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-pokemon',
@@ -45,7 +46,7 @@ export class PokemonComponent implements OnInit {
       this.pkmnService.recuperarPokemonPorNro(strPreviousPkmn).subscribe(
           (pkmnRecuperado : any) => {
             this.previousPkmn = pkmnRecuperado;
-            console.log('Pokemon recuperado por el ID desde la base de datos: ' + pkmnRecuperado);
+            console.log('Pokemon recuperado por el número desde la base de datos: ' + pkmnRecuperado);
           }
         );
       }
@@ -57,7 +58,7 @@ export class PokemonComponent implements OnInit {
       this.pkmnService.recuperarPokemonPorNro(strNextPkmn).subscribe(
         (pkmnRecuperado : Pokemon) => {
           this.nextPkmn = pkmnRecuperado;
-          console.log('Pokemon recuperado por el ID desde la base de datos: ' + pkmnRecuperado);
+          console.log('Pokemon recuperado por el número desde la base de datos: ' + pkmnRecuperado);
         }
       );
     }
@@ -69,5 +70,9 @@ export class PokemonComponent implements OnInit {
   ocultarModal(){
     this.visibilidadModal = false;
   }
+
+  editarPokemon(form : NgForm){
+
+    }
 
 }
