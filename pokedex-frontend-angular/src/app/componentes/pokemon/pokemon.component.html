@@ -41,10 +41,10 @@
     <h2 class="display-3 text-center">Modificar registro de {{pkmn.nombre}}</h2>
     <form #f="ngForm" (ngSubmit)="f.form.valid && guardarPokemon()" class="grid col-4 gap-50">
       <label for="nombre" class="span-1 text-center">Nombre: </label>
-      <input type="text" class="span-3" name="nombre" value="{{pkmn.nombre}}" required [(ngModel)]="nombrePkmnForm">
+      <input type="text" class="span-3" name="nombre" placeholder="{{pkmn.nombre}}" required [(ngModel)]="nombrePkmnForm">
 
       <label for="nroPkmn" class="span-1 text-center">Número: </label>
-      <input type="text" name="nroPkmn" class="span-3" value="{{pkmn.nroPkmn}}" required [(ngModel)]="nroPkmnForm">
+      <input type="text" name="nroPkmn" class="span-3" placeholder="{{pkmn.nroPkmn}}" required [(ngModel)]="nroPkmnForm">
 
       <label for="tipo1" class="span-1 text-center">Primer tipo: </label>
       <select name="tipo1" id="tipo1" size="6" class="span-3" required [(ngModel)]="tipo1PkmnForm">

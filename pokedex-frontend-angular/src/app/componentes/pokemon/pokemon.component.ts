@@ -85,7 +85,7 @@ export class PokemonComponent implements OnInit {
     const tipo2 : Tipo = new Tipo(parseInt(this.tipo2PkmnForm));
 
     //Crea el pokemon a partir del formulario
-    const pkmnForm : Pokemon = new Pokemon(this.pkmn.idPkmn, this.nombrePkmnForm, this.nroPkmnForm,
+    const pkmnForm : Pokemon = new Pokemon(this.pkmn.idPkmn, this.nroPkmnForm, this.nombrePkmnForm,
                                           tipo1, tipo2, this.descripcionPkmnForm);
 
     //Llama al servicio
