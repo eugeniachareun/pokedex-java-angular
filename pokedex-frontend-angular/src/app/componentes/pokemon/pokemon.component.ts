@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { PokemonService } from 'src/app/service/pokemon.service';
 import { Pokemon } from 'src/app/model/pokemon.model';
 import { NgForm } from '@angular/forms';
+import { Tipo } from 'src/app/model/tipo.model';
 
 @Component({
   selector: 'app-pokemon',
@@ -79,7 +80,16 @@ export class PokemonComponent implements OnInit {
   }
 
   guardarPokemon(){
+    //Recupera los tipos
+    const tipo1 : Tipo = new Tipo(parseInt(this.tipo1PkmnForm));
+    const tipo2 : Tipo = new Tipo(parseInt(this.tipo2PkmnForm));
 
-    }
+    //Crea el pokemon a partir del formulario
+    const pkmnForm : Pokemon = new Pokemon(this.pkmn.idPkmn, this.nombrePkmnForm, this.nroPkmnForm,
+                                          tipo1, tipo2, this.descripcionPkmnForm);
+
+    //Llama al servicio
+    this.pkmnService.modificarPokemon(this.pkmn.idPkmn!, pkmnForm);
+  }
 
 }
