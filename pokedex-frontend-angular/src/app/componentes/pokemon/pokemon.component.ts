@@ -17,6 +17,13 @@ export class PokemonComponent implements OnInit {
   nextPkmn! : Pokemon;
   visibilidadModal : boolean = false;
 
+  //Atributos de form
+  nombrePkmnForm! :string;
+  nroPkmnForm! : string;
+  tipo1PkmnForm! : string;
+  tipo2PkmnForm! : string;
+  descripcionPkmnForm! :string
+
 
   constructor(private pkmnService : PokemonService,
               private route: ActivatedRoute) { }
@@ -71,7 +78,7 @@ export class PokemonComponent implements OnInit {
     this.visibilidadModal = false;
   }
 
-  editarPokemon(form : NgForm){
+  guardarPokemon(){
 
     }
 
