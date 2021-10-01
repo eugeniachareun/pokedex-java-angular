@@ -1,5 +1,5 @@
 import { TipoService } from './../../service/tipo.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { PokemonService } from 'src/app/service/pokemon.service';
 import { Pokemon } from 'src/app/model/pokemon.model';
@@ -27,7 +27,8 @@ export class PokemonComponent implements OnInit {
 
   constructor(private pkmnService : PokemonService,
               private route: ActivatedRoute,
-              private tipoService : TipoService) { }
+              private tipoService : TipoService,
+              private router : Router) { }
 
   ngOnInit(): void {
     //Recupera el pokemon a partir del nombre
@@ -84,9 +85,9 @@ export class PokemonComponent implements OnInit {
   }
 
   guardarPokemon(){
-    //Crea los tipos a partir de sus ID
-    const tipo1: Tipo = new Tipo(parseInt(this.tipo1PkmnForm));
-    const tipo2: Tipo = new Tipo(parseInt(this.tipo2PkmnForm));
+    //Recupera los tipos a partir de sus ID
+    const tipo1: Tipo | undefined = this.tipoService.buscarTipoPorId(parseInt(this.tipo1PkmnForm));
+    const tipo2: Tipo | undefined = this.tipoService.buscarTipoPorId(parseInt(this.tipo2PkmnForm));
 
     //Crea el pokemon a partir del formulario
     const pkmnForm : Pokemon = new Pokemon(this.pkmn.idPkmn, this.pkmn.nroPkmn, this.pkmn.nombre,
@@ -99,4 +100,11 @@ export class PokemonComponent implements OnInit {
     this.ocultarModal();
   }
 
+  onEliminarPkmn(){
+    const str = '¿Desea eliminar el registro de ' + this.pkmn.nombre +'?';
+    if(confirm(str)){
+      this.pkmnService.eliminarPokemon(this.pkmn.idPkmn!);
+      this.router.navigate(['/']);
+    }
+  }
 }
