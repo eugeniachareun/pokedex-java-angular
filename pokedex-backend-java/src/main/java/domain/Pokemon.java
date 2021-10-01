@@ -138,7 +138,7 @@ public class Pokemon implements Serializable {
   }
 
   public void setTipo2(Tipo tipo) {
-    this.tipo1 = tipo2;
+    this.tipo2 = tipo2;
   }
 
   @Override
