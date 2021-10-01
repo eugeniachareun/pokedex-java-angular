@@ -1,5 +1,3 @@
-import { Tipo } from "./tipo.model";
-
 export class Pokemon{
 
   constructor(public idPkmn? : number, public nroPkmn? : string,
