@@ -2,6 +2,7 @@ package service;
 
 import data.PokemonDao;
 import domain.Pokemon;
+import domain.Tipo;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -33,10 +34,10 @@ public class PokemonServiceRS {
   
   @GET
   @Produces(value= MediaType.APPLICATION_JSON)
-  @Path("tipo/{idTipo}")
-  public List<Pokemon> buscarPokemonsPorTipo(@PathParam("idTipo") int idTipo){
-    System.out.println("ID tipo seleccionado: " + idTipo);
-    List<Pokemon> pokemons = pokemonDao.getAllPokemonsByTipo(idTipo);
+  @Path("tipo/{tipo}")
+  public List<Pokemon> buscarPokemonsPorTipo(@PathParam("tipo") Tipo tipo){
+    System.out.println("Tipo seleccionado: " + tipo.getNombre());
+    List<Pokemon> pokemons = pokemonDao.getAllPokemonsByTipo(tipo);
     System.out.println("Lista recuperada de pokemons por tipo " + pokemons);
     return pokemons;
   }
