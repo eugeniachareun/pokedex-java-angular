@@ -9,7 +9,7 @@
       <div class="detalle">
         <div id="botonera-edicion">
           <a (click)="mostrarModal()" class="boton btn-peq"><i class="fas fa-cog"></i> Editar</a>
-          <a class="boton btn-negro btn-peq"><i class="fas fa-trash"></i> Eliminar</a>
+          <a (click)="onEliminarPkmn()" class="boton btn-negro btn-peq"><i class="fas fa-trash"></i> Eliminar</a>
         </div>
         <p class="text-justify">{{pkmn.descripcion}}</p>
         <div id="tipos" class="text-center">
