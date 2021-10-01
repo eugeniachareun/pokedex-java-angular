@@ -110,6 +110,7 @@ public class PokemonServiceRS {
   @Produces(value= MediaType.APPLICATION_JSON)
   @Path("{idPkmn}")
   public Response modificarPokemon(@PathParam("idPkmn") int idPkmn, Pokemon pkmnModificado){
+    System.out.println("REST pkmn recibido para update: " + pkmnModificado);
     Pokemon pkmn = pokemonDao.getPokemonById(idPkmn);
     if(pkmn != null){
       pokemonDao.updatePokemon(pkmnModificado);

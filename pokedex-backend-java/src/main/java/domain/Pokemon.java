@@ -2,6 +2,7 @@ package domain;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -51,11 +52,11 @@ public class Pokemon implements Serializable {
   private Short mostrar;
   
   @JoinColumn(name = "tipo1", referencedColumnName = "id_tipo")
-  @ManyToOne
+  @ManyToOne(cascade = CascadeType.MERGE)
   private Tipo tipo1;
   
   @JoinColumn(name = "tipo2", referencedColumnName = "id_tipo")
-  @ManyToOne
+  @ManyToOne(cascade = CascadeType.MERGE)
   private Tipo tipo2;
 
   public Pokemon() {
