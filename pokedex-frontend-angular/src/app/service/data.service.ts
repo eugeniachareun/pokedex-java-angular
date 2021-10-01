@@ -49,7 +49,11 @@ export class DataService{
   }
 
   deletePokemon(idPkmn : number){
-    return this.httpClient.delete(this.urlBase + '/' + idPkmn);
+    console.log('DATASERVICE ELIMINARA EL PKMN CON ID: ' + idPkmn);
+    return this.httpClient.delete(this.urlBase + '/' + idPkmn).subscribe(
+      response => console.log('Respuesta al eliminar pkmn: ' + response),
+      error => console.log('Error al eliminar pkmn: ' + error )
+    );
   }
 }
 
