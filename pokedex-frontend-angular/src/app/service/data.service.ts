@@ -1,5 +1,4 @@
 import { Pokemon } from './../model/pokemon.model';
-import { Tipo } from './../model/tipo.model';
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 
