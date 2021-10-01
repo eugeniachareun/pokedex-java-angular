@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -16,7 +17,7 @@ import javax.validation.constraints.Size;
 
 /**
  *
- * @author euge
+ * @author Eugenia Chareun <eugenia.chareun@gmail.com>
  */
 @Entity
 @NamedQueries({
@@ -26,23 +27,24 @@ import javax.validation.constraints.Size;
 public class Pokemon implements Serializable {
 
   private static final long serialVersionUID = 1L;
-  
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Basic(optional = false)
   @Column(name = "id_pkmn")
   private Integer idPkmn;
-  
+ 
   @Basic(optional = false)
   @NotNull
+  @Size(min = 1, max = 3)
   @Column(name = "nro_pkmn")
   private String nroPkmn;
-  
+ 
   @Basic(optional = false)
   @NotNull
   @Size(min = 1, max = 45)
   private String nombre;
-  
+ 
   @Size(max = 255)
   private String descripcion;
   
@@ -67,11 +69,21 @@ public class Pokemon implements Serializable {
     this.nroPkmn = nroPkmn;
     this.nombre = nombre;
   }
-  
+
   public Pokemon(String nroPkmn){
     this.nroPkmn = nroPkmn;
   }
 
+  public Pokemon(Integer idPkmn, String nroPkmn, String nombre, String descripcion, Short mostrar, Tipo tipo1, Tipo tipo2) {
+    this.idPkmn = idPkmn;
+    this.nroPkmn = nroPkmn;
+    this.nombre = nombre;
+    this.descripcion = descripcion;
+    this.mostrar = mostrar;
+    this.tipo1 = tipo1;
+    this.tipo2 = tipo2;
+  }
+  
   public Integer getIdPkmn() {
     return idPkmn;
   }
@@ -152,7 +164,5 @@ public class Pokemon implements Serializable {
   public String toString() {
     return "Pokemon{" + "idPkmn=" + idPkmn + ", nroPkmn=" + nroPkmn + ", nombre=" + nombre + ", descripcion=" + descripcion + ", mostrar=" + mostrar + ", tipo1=" + tipo1 + ", tipo2=" + tipo2 + '}';
   }
-
-
   
 }
