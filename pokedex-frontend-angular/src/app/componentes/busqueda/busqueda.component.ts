@@ -37,6 +37,9 @@ export class BusquedaComponent implements OnInit {
       this.pkmnService.setPokemons(pokemonsObtenidos);
       console.log('Pokemons recuperados de la base de datos: ' + pokemonsObtenidos);
     });
+
+    //Genera pokemon random
+    this.generarRandom();
   }
 
   onBuscar() {
@@ -84,12 +87,25 @@ export class BusquedaComponent implements OnInit {
     this.visibilidadLista = true;
   }
 
+  iniciarRandom(){
+    this.mostrarRandom();
+    this.generarRandom();
+  }
+
   mostrarRandom(){
     this.visibilidadFiltro = false;
+    this.generarRandom();
     this.visibilidadRandom = true;
   }
 
   ocultarRandom(){
     this.visibilidadRandom = false;
   }
+
+  generarRandom(){
+    this.pkmnService.obtenerPokemonRandom().subscribe(
+      (pokemon : any) => this.pkmnRandom = pokemon
+    );
+  }
+
 }

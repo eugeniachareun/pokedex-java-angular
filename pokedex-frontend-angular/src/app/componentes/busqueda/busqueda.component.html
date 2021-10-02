@@ -15,7 +15,7 @@
           <button *ngIf="visibilidadFiltro" class="boton btn-negro margin-top" (click)="ocultarFiltro()">Ocultar listado por tipo</button>
         </div>
         <div>
-          <button *ngIf="!visibilidadRandom" class="boton btn-azul margin-top" (click)="mostrarRandom()">¡Sorpresa!</button>
+          <button *ngIf="!visibilidadRandom" class="boton btn-azul margin-top" (click)="iniciarRandom()">¡Sorpresa!</button>
           <button *ngIf="visibilidadRandom" class="boton btn-azul margin-top" (click)="ocultarRandom()">Ocultar pokemon random</button>
         </div>
       </div>
@@ -100,8 +100,25 @@
       </table>
     </section>
 
-    <section *ngIf="visibilidadRandom && !visibilidadFiltro">
-      randommm
+    <section *ngIf="visibilidadRandom && !visibilidadFiltro" class="text-center" id="pokemon-card">
+        <div id="header" class="margin-top">
+          <h2 class="display-2 med-display-2 peq-display-2 span-2">{{pkmnRandom.nombre}} <span>Nº {{pkmnRandom.nroPkmn}}</span></h2>
+        </div>
+        <div class="grid col-2 peq-col-1">
+          <img id="pkmn-img" class="margin-x-auto" src="../../../assets/img/{{pkmnRandom.nroPkmn!}}.png"
+            alt="{{pkmnRandom.nombre}}">
+          <div class="detalle">
+            <p class="text-justify">{{pkmnRandom.descripcion}}</p>
+            <div id="tipos" class="text-center">
+              <h3>Tipo:</h3>
+              <img src="../../../assets/tipos/{{pkmnRandom.tipo1}}.gif" alt="{{pkmnRandom.tipo1}}">
+              <span *ngIf="pkmnRandom.tipo2! != 'noTiene'; else relleno "><img
+                  src="../../../assets/tipos/{{pkmnRandom.tipo2}}.gif" alt="{{pkmnRandom.tipo2}}"></span>
+              <ng-template #relleno><span></span></ng-template>
+            </div>
+          </div>
+        </div>
     </section>
+
   </div>
 </main>

@@ -47,7 +47,9 @@ public class PokemonDaoImpl implements PokemonDao{
     int min = 1;
     int max = 151;
     int random = (int) Math.floor(Math.random()*(max-min+1)+min);
-    return (Pokemon) em.createNamedQuery("Pokemon.findByNroPkmn").setParameter("nroPkmn", random).getSingleResult();
+    String zeroFilled = this.zeroFill(random);
+    
+    return (Pokemon) em.createNamedQuery("Pokemon.findByNroPkmn").setParameter("nroPkmn", zeroFilled).getSingleResult();
   }
 
   @Override
@@ -78,6 +80,18 @@ public class PokemonDaoImpl implements PokemonDao{
   public void deletePokemon(Pokemon pkmn) {
     em.remove(em.merge(pkmn));
   }
-
   
+  private String zeroFill(int n){
+    String str = null;
+    if(n <= 9 ){
+      str = "00" + n;
+    } else if(n >= 10 && n <= 99){
+      str = "0" + n;
+    } else{
+      str = Integer.toString(n);
+    }
+    return str;
+  }
 }
+
+
