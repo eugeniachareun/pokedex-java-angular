@@ -1,6 +1,11 @@
-<div class="contenedor text-center">
+<main class="contenedor text-center">
   <div class="card">
     <h2 class="display-1 med-display-1 peq-display-1">Pokedex de Kanto</h2>
+    <div class="text-right margin-bottom">
+      <button class="boton btn-azul" (click)="mostrarModal()">
+        <i class="fas fa-plus-circle"></i> Nuevo
+      </button>
+    </div>
     <div class="table-responsive">
       <table id="pokemons-table" class="table">
         <thead>
@@ -36,5 +41,47 @@
         </tbody>
       </table>
     </div>
+  </div>
+</main>
+
+<div id="modal" class="modal" *ngIf="visibilidadModal">
+  <div class="modal-contenido">
+    <div class=" width-100 text-right">
+      <a (click)="ocultarModal()" class="boton">x</a>
+    </div>
+    <h2 class="display-3 med-display-3 peq-display-3 text-center">Agregar un pokemon</h2>
+    <form #f="ngForm" (ngSubmit)="f.form.valid && nuevoPkmn()" class="grid col-4 gap-50" id="form-agregar">
+      <label for="nombre" class="span-1 text-center">Nombre: </label>
+      <input type="text" class="span-3" name="nombre" [(ngModel)]="nombreInput" required>
+
+      <label for="nroPkmn" class="span-1 text-center">Número: </label>
+      <input type="text" name="nroPkmn" class="span-3" required minlength="3" max-length="3" [(ngModel)]="nroInput">
+
+      <label for="tipo1" class="span-1 text-center">Primer tipo: </label>
+      <select name="tipo1" id="tipo1" size="5" class="span-3" required [(ngModel)]="tipo1Input">
+        <option value="none" disabled> --Seleccione un tipo-- </option>
+        <option *ngFor="let tipoK of tipoKeys | slice:0:18; let tipoV of tipoValues | slice:0:18"
+                [ngValue]="tipoK"> {{tipoV}} </option>
+      </select>
+
+      <label for="tipo2" class="span-1 text-center">Segundo tipo: </label>
+      <select name="tipo2" id="tipo2" size="5" class="span-3" required [(ngModel)]="tipo2Input">
+        <option value="none" disabled> --Seleccione un tipo-- </option>
+        <option *ngFor="let tipoK of tipoKeys | slice:0:18; let tipoV of tipoValues | slice:0:18"
+                [ngValue]="tipoK"> {{tipoV}} </option>
+        <option value="noTiene"> No tiene segundo tipo </option>
+      </select>
+
+      <label for="descripcion" class="span-1 text-center">Descripción: </label>
+      <textarea name="descripcion" id="descripcion" cols="5" rows="5" class="span-3"
+                placeholder="Descripción del pokemon"
+                required [(ngModel)]="descripcionInput" > </textarea>
+
+      <div class="span-4 text-center">
+        <button type="submit" class="boton">
+          <i class="fas fa-save"></i> Guardar pokemon
+        </button>
+    </div>
+    </form>
   </div>
 </div>

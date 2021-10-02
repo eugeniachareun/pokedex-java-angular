@@ -46,7 +46,7 @@
 
       <label for="nroPkmn" class="span-1 text-center">Número: </label>
       <input type="text" name="nroPkmn" class="span-3"
-            required [(ngModel)]="pkmn.nroPkmn">
+            required [(ngModel)]="pkmn.nroPkmn" minlength="3" max-length="3">
 
       <label for="tipo1" class="span-1 text-center">Primer tipo: </label>
       <select name="tipo1" id="tipo1" size="5" class="span-3" required [(ngModel)]="tipo1PkmnForm">
