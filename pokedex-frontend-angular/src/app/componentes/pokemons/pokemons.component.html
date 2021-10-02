@@ -21,10 +21,10 @@
               <img class="sprite" src="../../../assets/spr/{{pkmn.nroPkmn}}MS.png" alt="{{pkmn.nombre}}">
             </td>
             <td>
-              <img class="tipo-img" src="../../../assets/tipos/{{pkmn.tipo1!.idTipo}}.gif" alt="{{pkmn.tipo1!.tipo}}">
+              <img class="tipo-img" src="../../../assets/tipos/{{pkmn.tipo1}}.gif" alt="{{pkmn.tipo1}}">
             </td>
-            <td *ngIf="pkmn.tipo2!.idTipo != 19; else relleno ">
-              <img class="tipo-img" src="../../../assets/tipos/{{pkmn.tipo2!.idTipo}}.gif" alt="{{pkmn.tipo2!.tipo}}">
+            <td *ngIf="pkmn.tipo2 != 'noTiene'; else relleno ">
+              <img class="tipo-img" src="../../../assets/tipos/{{pkmn.tipo2}}.gif" alt="{{pkmn.tipo2}}">
             </td>
             <td>
               <a href="/{{pkmn.nombre}}" class="boton btn-negro"> <i class="fas fa-book"></i>  Ver detalle </a>

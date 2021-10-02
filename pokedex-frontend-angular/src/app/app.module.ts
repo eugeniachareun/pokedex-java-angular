@@ -1,4 +1,3 @@
-import { TipoService } from './service/tipo.service';
 import { BusquedaComponent } from './componentes/busqueda/busqueda.component';
 import { PokemonComponent } from './componentes/pokemon/pokemon.component';
 import { NgModule } from '@angular/core';
@@ -31,7 +30,7 @@ import { PokemonsComponent } from './componentes/pokemons/pokemons.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [DataService, PokemonService, TipoService],
+  providers: [DataService, PokemonService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

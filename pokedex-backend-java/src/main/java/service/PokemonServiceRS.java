@@ -36,7 +36,7 @@ public class PokemonServiceRS {
   @Produces(value= MediaType.APPLICATION_JSON)
   @Path("tipo/{tipo}")
   public List<Pokemon> buscarPokemonsPorTipo(@PathParam("tipo") Tipo tipo){
-    System.out.println("Tipo seleccionado: " + tipo.getNombre());
+    System.out.println("Tipo seleccionado: " + tipo);
     List<Pokemon> pokemons = pokemonDao.getAllPokemonsByTipo(tipo);
     System.out.println("Lista recuperada de pokemons por tipo " + pokemons);
     return pokemons;

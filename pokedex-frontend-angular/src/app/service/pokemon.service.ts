@@ -1,6 +1,6 @@
-import { Tipo } from './../model/tipo.model';
 import { Injectable } from '@angular/core';
 import { Pokemon } from '../model/pokemon.model';
+import { Tipo } from '../model/tipo.enum';
 import { DataService } from './data.service';
 
 @Injectable()
@@ -22,13 +22,11 @@ export class PokemonService{
   //TODO ver congruencia const y let
 
   obtenerPokemonsPorTipo1(tipo : Tipo){
-    let idTipo = tipo.idTipo;
-    this.pokemonsTipo1 = this.pokemons.filter(pokemon => pokemon.tipo1?.idTipo == idTipo);
+    this.pokemonsTipo1 = this.pokemons.filter(pokemon => pokemon.tipo1 == tipo);
   }
 
   obtenerPokemonsPorTipo2(tipo : Tipo){
-    let idTipo = tipo.idTipo;
-    this.pokemonsTipo2 = this.pokemons.filter(pokemon => pokemon.tipo2?.idTipo == idTipo);
+    this.pokemonsTipo2 = this.pokemons.filter(pokemon => pokemon.tipo2 == tipo);
   }
 
   obtenerPokemonPorId(idPkmn : number){
@@ -72,7 +70,7 @@ export class PokemonService{
   agregarPokemon(pkmn : Pokemon){
     console.log('Pokemon a agregar: ' + pkmn.nombre);
     this.dataService.insertPokemon(pkmn).subscribe(
-      (pokemon : Pokemon ) => {
+      (pokemon : any ) => {
         console.log('ID pokemon agregado: ' + pokemon.idPkmn);
         this.pokemons.push(pokemon);
       }

@@ -1,10 +1,9 @@
-import { TipoService } from './../../service/tipo.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { ApplicationRef, Component, OnInit } from '@angular/core';
 import { PokemonService } from 'src/app/service/pokemon.service';
 import { Pokemon } from 'src/app/model/pokemon.model';
 import { NgForm } from '@angular/forms';
-import { Tipo } from 'src/app/model/tipo.model';
+import { Tipo } from 'src/app/model/tipo.enum';
 
 @Component({
   selector: 'app-pokemon',
@@ -18,16 +17,17 @@ export class PokemonComponent implements OnInit {
   previousPkmn! : Pokemon;
   nextPkmn! : Pokemon;
   visibilidadModal : boolean = false;
-  arrayTipos : Tipo[] = this.tipoService.getArreglo();
+  tipo! : Tipo;
+  tipoKeys = Object.keys(Tipo);
+  tipoValues = Object.values(Tipo);
 
 
   //Atributos de form
-  tipo1PkmnForm : string = '';
-  tipo2PkmnForm : string = '';
+  tipo1PkmnForm! : Tipo;
+  tipo2PkmnForm! : Tipo;
 
   constructor(private pkmnService : PokemonService,
               private route: ActivatedRoute,
-              private tipoService : TipoService,
               private router : Router) { }
 
   ngOnInit(): void {
@@ -49,9 +49,9 @@ export class PokemonComponent implements OnInit {
       }
     );
 
-    //Inicializa atributos de form con valores del pokemon convertidos a string
-    this.tipo1PkmnForm = this.pkmn.tipo1!.idTipo + '';
-    this.tipo2PkmnForm = this.pkmn.tipo2!.idTipo + '';
+    //Inicializa atributos de form con valores del pokemon
+    this.tipo1PkmnForm = this.pkmn.tipo1;
+    this.tipo2PkmnForm = this.pkmn.tipo2;
   }
 
   recuperarPreviousPkmn(){
@@ -69,7 +69,7 @@ export class PokemonComponent implements OnInit {
       const nroNextPkmn : number = parseInt(this.pkmn.nroPkmn!) + 1;
       const strNextPkmn : string = this.pkmnService.zeroFill(nroNextPkmn);
       this.pkmnService.recuperarPokemonPorNro(strNextPkmn).subscribe(
-        (pkmnRecuperado : Pokemon) => {
+        (pkmnRecuperado : any) => {
           this.nextPkmn = pkmnRecuperado;
           console.log('Pokemon recuperado por el número desde la base de datos: ' + pkmnRecuperado);
         }
@@ -85,19 +85,23 @@ export class PokemonComponent implements OnInit {
   }
 
   guardarPokemon(){
-    //Recupera los tipos a partir de sus ID
-    const tipo1: Tipo | undefined = this.tipoService.buscarTipoPorId(parseInt(this.tipo1PkmnForm));
-    const tipo2: Tipo | undefined = this.tipoService.buscarTipoPorId(parseInt(this.tipo2PkmnForm));
 
     //Crea el pokemon a partir del formulario
-    const pkmnForm : Pokemon = new Pokemon(this.pkmn.idPkmn, this.pkmn.nroPkmn, this.pkmn.nombre,
-                                          tipo1, tipo2, this.pkmn.descripcion);
+    const pkmnForm : Pokemon = new Pokemon(this.tipo1PkmnForm, this.tipo2PkmnForm,
+                                          this.pkmn.idPkmn, this.pkmn.nroPkmn,
+                                          this.pkmn.nombre, this.pkmn.descripcion);
+
 
     //Llama al servicio
     this.pkmnService.modificarPokemon(this.pkmn.idPkmn!, pkmnForm);
 
     //Oculta el modal
     this.ocultarModal();
+
+    //Refresh
+    this.ngOnInit();
+    location.reload();
+
   }
 
   onEliminarPkmn(){

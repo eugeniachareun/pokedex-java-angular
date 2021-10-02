@@ -14,9 +14,9 @@
         <p class="text-justify">{{pkmn.descripcion}}</p>
         <div id="tipos" class="text-center">
           <h3>Tipo:</h3>
-          <img src="../../../assets/tipos/{{pkmn.tipo1!.idTipo!}}.gif" alt="{{pkmn.tipo1!.tipo!}}">
-          <span *ngIf="pkmn.tipo2!.idTipo != 19; else relleno "><img
-              src="../../../assets/tipos/{{pkmn.tipo2!.idTipo!}}.gif" alt="{{pkmn.tipo2!.tipo!}}"></span>
+          <img src="../../../assets/tipos/{{pkmn.tipo1}}.gif" alt="{{pkmn.tipo1}}">
+          <span *ngIf="pkmn.tipo2 != 'noTiene'; else relleno "><img
+              src="../../../assets/tipos/{{pkmn.tipo2}}.gif" alt="{{pkmn.tipo2}}"></span>
           <ng-template #relleno><span></span></ng-template>
         </div>
         <div id="botonera-nav" class="grid col-2">
@@ -38,8 +38,8 @@
     <div class=" width-100 text-right">
       <a (click)="ocultarModal()" class="boton">x</a>
     </div>
-    <h2 class="display-3 text-center">Modificar registro de {{pkmn.nombre}}</h2>
-    <form #f="ngForm" (ngSubmit)="f.form.valid && guardarPokemon()" class="grid col-4 gap-50">
+    <h2 class="display-3 med-display-3 peq-display-3 text-center">Modificar registro de {{pkmn.nombre}}</h2>
+    <form #f="ngForm" (ngSubmit)="f.form.valid && guardarPokemon()" class="grid col-4 gap-50" id="form-modificar">
       <label for="nombre" class="span-1 text-center">Nombre: </label>
       <input type="text" class="span-3" name="nombre"
             required [(ngModel)]="pkmn.nombre">
@@ -51,17 +51,20 @@
       <label for="tipo1" class="span-1 text-center">Primer tipo: </label>
       <select name="tipo1" id="tipo1" size="5" class="span-3" required [(ngModel)]="tipo1PkmnForm">
         <option value="none" disabled> --Seleccione un tipo-- </option>
-        <option *ngFor="let tipo of arrayTipos | slice:0:18"
-                [ngValue]="tipo.idTipo"
-                [selected] ="pkmn.tipo1!.idTipo == tipo.idTipo"> {{tipo.tipo}} </option>
+                                        <!--  ? selected -->
+        <option *ngFor="let tipoK of tipoKeys | slice:0:18; let tipoV of tipoValues | slice:0:18"
+                [ngValue]="tipoK"
+                [selected] ="pkmn.tipo1 == tipoV"> {{tipoV}} </option>
       </select>
 
       <label for="tipo2" class="span-1 text-center">Segundo tipo: </label>
       <select name="tipo2" id="tipo2" size="5" class="span-3" required [(ngModel)]="tipo2PkmnForm">
         <option value="none" disabled> --Seleccione un tipo-- </option>
-        <option *ngFor="let tipo of arrayTipos"
-                [ngValue]="tipo.idTipo"
-                [selected] ="pkmn.tipo2!.idTipo == tipo.idTipo"> {{tipo.tipo}} </option>
+                                        <!--  ? selected -->
+        <option *ngFor="let tipoK of tipoKeys | slice:0:18; let tipoV of tipoValues | slice:0:18"
+                [ngValue]="tipoK"
+                [selected] ="pkmn.tipo2 == tipoV"> {{tipoV}} </option>
+        <option value="noTiene" [selected]="pkmn.tipo2 == 'noTiene'"> No tiene segundo tipo </option>
       </select>
 
       <label for="descripcion" class="span-1 text-center">Descripción: </label>
@@ -69,9 +72,11 @@
                 placeholder="Descripción del pokemon" value="{{pkmn.descripcion}}"
                 required [(ngModel)]="pkmn.descripcion" > </textarea>
 
-      <button type="submit" class="boton">
-        <i class="fas fa-disk"></i> Guardar pokemon
-      </button>
+      <div class="span-4 text-center">
+        <button type="submit" class="boton">
+          <i class="fas fa-disk"></i> Guardar pokemon
+        </button>
+    </div>
     </form>
   </div>
 </div>

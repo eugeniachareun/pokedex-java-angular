@@ -3,6 +3,7 @@ package domain;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -13,6 +14,9 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import org.eclipse.persistence.annotations.ConversionValue;
+import org.eclipse.persistence.annotations.Convert;
+import org.eclipse.persistence.annotations.ObjectTypeConverter;
 
 /**
  *
@@ -49,16 +53,14 @@ public class Pokemon implements Serializable {
   @Size(min = 1, max = 45)
   private String nombre;
   
-  @Enumerated(value = EnumType.ORDINAL)
+  @Enumerated(value = EnumType.STRING)
   @Basic(optional = false)
   @NotNull
-  @Size(min = 1, max = 9)
   private Tipo tipo1;
   
-  @Enumerated(value = EnumType.ORDINAL)
+  @Enumerated(value = EnumType.STRING)
   @Basic(optional = false)
   @NotNull
-  @Size(min = 1, max = 21)
   private Tipo tipo2;
   
   
