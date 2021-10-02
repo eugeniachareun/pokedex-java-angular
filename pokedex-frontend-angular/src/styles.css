@@ -24,7 +24,7 @@ html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}main{display:b
   --negro: #2d2c2cff;
   --blanco: #f0eff4ff;
   --verde: #3ab795ff;
-  --azul: #0075f2ff;
+  --azul: #228afa;
 }
 
 /* ====================
@@ -166,6 +166,11 @@ img{
 ==================== */
 .flex-wrap-center{display: flex; flex-wrap: wrap;}
 
+.flex-space{
+  display: flex;
+  justify-content:space-around;
+}
+
 /* ====================
 	*   COMPONENTES   *
 ==================== */
@@ -283,6 +288,10 @@ img{
   width: auto;
 }
 
+#busqueda-botones{
+  margin-left: 15px;
+}
+
 #busqueda-filtro label{
   display: flex;
   align-items: center;
@@ -344,6 +353,18 @@ form .input:focus{
 
 .btn-gris:hover{
   background: #b9b8b8;
+}
+
+.btn-verde{
+  background: var(--verde);
+}
+
+.btn-azul{
+  background: var(--azul);
+}
+
+.btn-azul:hover{
+  background: #54a7ff;
 }
 
 .btn-ancho{

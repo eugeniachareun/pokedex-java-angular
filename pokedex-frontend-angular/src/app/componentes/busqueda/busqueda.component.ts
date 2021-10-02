@@ -23,10 +23,15 @@ export class BusquedaComponent implements OnInit {
   arrayTipo1! : Pokemon[];
   arrayTipo2! : Pokemon[];
 
+  //Pokemon random
+  pkmnRandom! : Pokemon;
+  visibilidadRandom : boolean = false;
+
 
   constructor(private pkmnService: PokemonService, private router: Router) {}
 
   ngOnInit(): void {
+    //Setea el arreglo pokemons de pkmnService
     this.pkmnService.obtenerPokemons().subscribe(
       (pokemonsObtenidos: any) => {
       this.pkmnService.setPokemons(pokemonsObtenidos);
@@ -63,6 +68,7 @@ export class BusquedaComponent implements OnInit {
   }
 
   verFiltro(){
+    this.visibilidadRandom = false;
     this.visibilidadFiltro = true;
   }
 
@@ -76,5 +82,14 @@ export class BusquedaComponent implements OnInit {
     this.arrayTipo2 = this.pkmnService.obtenerPokemonsPorTipo2(this.tipoInput);
 
     this.visibilidadLista = true;
+  }
+
+  mostrarRandom(){
+    this.visibilidadFiltro = false;
+    this.visibilidadRandom = true;
+  }
+
+  ocultarRandom(){
+    this.visibilidadRandom = false;
   }
 }
