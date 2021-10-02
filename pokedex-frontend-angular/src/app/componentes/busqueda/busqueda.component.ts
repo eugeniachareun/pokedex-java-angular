@@ -94,6 +94,7 @@ export class BusquedaComponent implements OnInit {
 
   mostrarRandom(){
     this.visibilidadFiltro = false;
+    this.visibilidadLista = false;
     this.generarRandom();
     this.visibilidadRandom = true;
   }

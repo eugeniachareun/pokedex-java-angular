@@ -374,6 +374,9 @@ form .input:focus{
 	*   TABLAS   *
 ==================== */
 .table-responsive {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-left: 10%;
   min-height: .01%;
   overflow-x:scroll;
@@ -404,7 +407,7 @@ form .input:focus{
 }
 
 .table{
-  width: 90%;
+  width: 100%;
 
   /*Scrollbar on top*/
   transform: rotateX(180deg);
