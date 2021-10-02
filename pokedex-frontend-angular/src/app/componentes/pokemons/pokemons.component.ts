@@ -16,6 +16,7 @@ export class PokemonsComponent implements OnInit {
     this.pkmnService.obtenerPokemons().subscribe(
       (pokemonsObtenidos: any) => {
       this.pokemons = pokemonsObtenidos;
+      this.pokemons.sort((a, b) => a.nroPkmn!.localeCompare(b.nroPkmn!));
       this.pkmnService.setPokemons(this.pokemons);
       console.log('Pokemons recuperados de la base de datos: ' + pokemonsObtenidos);
     });
