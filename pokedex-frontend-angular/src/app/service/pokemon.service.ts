@@ -7,12 +7,13 @@ import { DataService } from './data.service';
 export class PokemonService{
   pokemons : Pokemon[] = [];
   pokemonsTipo1 : Pokemon[] = [];
-  pokemonsTipo2 : Pokemon[] = [];
+  pokemonsTipo2 : Pokemon [] = [];
 
   constructor(private dataService : DataService){}
 
   setPokemons(pokemons : Pokemon[]){
     this.pokemons = pokemons;
+    this.pokemons.sort((a,b) => a.nroPkmn!.localeCompare(b.nroPkmn!));
   }
 
   obtenerPokemons(){
@@ -23,12 +24,12 @@ export class PokemonService{
 
   obtenerPokemonsPorTipo1(tipo : Tipo){
     this.pokemonsTipo1 = this.pokemons.filter(pokemon => pokemon.tipo1 == tipo);
-    return this.pokemonsTipo1.sort((a,b) => a.nroPkmn!.localeCompare(b.nroPkmn!));
+    return this.pokemonsTipo1;
   }
 
   obtenerPokemonsPorTipo2(tipo : Tipo){
     this.pokemonsTipo2 = this.pokemons.filter(pokemon => pokemon.tipo2 == tipo);
-    return this.pokemonsTipo1.sort((a,b) => a.nroPkmn!.localeCompare(b.nroPkmn!));
+    return this.pokemonsTipo2;
   }
 
   obtenerPokemonPorId(idPkmn : number){

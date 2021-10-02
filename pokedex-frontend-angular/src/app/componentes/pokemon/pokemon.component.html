@@ -51,7 +51,6 @@
       <label for="tipo1" class="span-1 text-center">Primer tipo: </label>
       <select name="tipo1" id="tipo1" size="5" class="span-3" required [(ngModel)]="tipo1PkmnForm">
         <option value="none" disabled> --Seleccione un tipo-- </option>
-                                        <!--  ? selected -->
         <option *ngFor="let tipoK of tipoKeys | slice:0:18; let tipoV of tipoValues | slice:0:18"
                 [ngValue]="tipoK"
                 [selected] ="pkmn.tipo1 == tipoV"> {{tipoV}} </option>
@@ -60,7 +59,6 @@
       <label for="tipo2" class="span-1 text-center">Segundo tipo: </label>
       <select name="tipo2" id="tipo2" size="5" class="span-3" required [(ngModel)]="tipo2PkmnForm">
         <option value="none" disabled> --Seleccione un tipo-- </option>
-                                        <!--  ? selected -->
         <option *ngFor="let tipoK of tipoKeys | slice:0:18; let tipoV of tipoValues | slice:0:18"
                 [ngValue]="tipoK"
                 [selected] ="pkmn.tipo2 == tipoV"> {{tipoV}} </option>

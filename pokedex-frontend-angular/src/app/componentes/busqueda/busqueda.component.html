@@ -6,5 +6,76 @@
         <i class="fas fa-search"></i>
       </button>
     </form>
+    <button class="boton btn-negro" (click)="verFiltro()">Ver lista de pokemons por tipo</button>
+  <form *ngIf="visibilidadFiltro" #ff="ngForm" (ngSubmit)="ff.form.valid && onFiltrar()">
+    <label>Tipo a filtrar: </label>
+    <select name="filtro" id="filtro" size="5" required [(ngModel)]="tipoInput">
+      <option value="none" disabled> --Seleccione un tipo-- </option>
+      <option *ngFor="let tipoK of tipoKeys | slice:0:18; let tipoV of tipoValues | slice:0:18"
+              [ngValue]="tipoK"> {{tipoV}} </option>
+    </select>
+    <button type="submit" class="boton">
+      <i class="fas fa-sliders-h"></i> Filtrar
+    </button>
+  </form>
+
+  <section *ngIf="visibilidadLista" class="table-responsive">
+    <table id="pokemons-table" class="table margin-x-auto">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nombre</th>
+            <th>Sprite</th>
+            <th>Tipo 1</th>
+            <th>Tipo 2</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Pokemons con el tipo filtrado como tipo principal -->
+          <tr *ngFor="let pkmn of arrayTipo1;">
+            <td>{{pkmn.nroPkmn}}</td>
+            <td>{{pkmn.nombre}}</td>
+            <td>
+              <img class="sprite" src="../../../assets/spr/{{pkmn.nroPkmn}}MS.png" alt="{{pkmn.nombre}}">
+            </td>
+            <td>
+              <img class="tipo-img" src="../../../assets/tipos/{{pkmn.tipo1}}.gif" alt="{{pkmn.tipo1}}">
+            </td>
+            <td *ngIf="pkmn.tipo2 != 'noTiene'; else relleno ">
+              <img class="tipo-img" src="../../../assets/tipos/{{pkmn.tipo2}}.gif" alt="{{pkmn.tipo2}}">
+            </td>
+            <td>
+              <a href="/{{pkmn.nombre}}" class="boton btn-negro"> <i class="fas fa-book"></i>  Ver detalle </a>
+            </td>
+            <ng-template #relleno>
+              <td></td>
+            </ng-template>
+          </tr>
+
+          <!-- Pokemons con el tipo filtrado como tipo secundario -->
+          <tr *ngFor="let pkmn2 of arrayTipo2;">
+            <td>{{pkmn2.nroPkmn}}</td>
+            <td>{{pkmn2.nombre}}</td>
+            <td>
+              <img class="sprite" src="../../../assets/spr/{{pkmn2.nroPkmn}}MS.png" alt="{{pkmn2.nombre}}">
+            </td>
+            <td>
+              <img class="tipo-img" src="../../../assets/tipos/{{pkmn2.tipo1}}.gif" alt="{{pkmn2.tipo1}}">
+            </td>
+            <td *ngIf="pkmn2.tipo2 != 'noTiene'; else relleno ">
+              <img class="tipo-img" src="../../../assets/tipos/{{pkmn2.tipo2}}.gif" alt="{{pkmn2.tipo2}}">
+            </td>
+            <td>
+              <a href="/{{pkmn2.nombre}}" class="boton btn-negro"> <i class="fas fa-book"></i>  Ver detalle </a>
+            </td>
+            <ng-template #relleno>
+              <td></td>
+            </ng-template>
+          </tr>
+
+        </tbody>
+      </table>
+  </section>
   </div>
 </div>

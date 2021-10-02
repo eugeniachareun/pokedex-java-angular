@@ -2,6 +2,7 @@ import { PokemonService } from './../../service/pokemon.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Pokemon } from 'src/app/model/pokemon.model';
+import { Tipo } from 'src/app/model/tipo.enum';
 
 @Component({
   selector: 'app-busqueda',
@@ -9,12 +10,28 @@ import { Pokemon } from 'src/app/model/pokemon.model';
   styles: [],
 })
 export class BusquedaComponent implements OnInit {
+  //Búsqueda de pokemon
   busquedaInput!: string;
   pkmn: Pokemon | undefined;
+
+  //Filtrado por tipo
+  visibilidadFiltro : boolean = false;
+  visibilidadLista : boolean = false;
+  tipoInput! : Tipo;
+  tipoKeys = Object.keys(Tipo);
+  tipoValues = Object.values(Tipo);
+  arrayTipo1! : Pokemon[];
+  arrayTipo2! : Pokemon[];
+
 
   constructor(private pkmnService: PokemonService, private router: Router) {}
 
   ngOnInit(): void {
+    this.pkmnService.obtenerPokemons().subscribe(
+      (pokemonsObtenidos: any) => {
+      this.pkmnService.setPokemons(pokemonsObtenidos);
+      console.log('Pokemons recuperados de la base de datos: ' + pokemonsObtenidos);
+    });
   }
 
   onBuscar() {
@@ -43,5 +60,20 @@ export class BusquedaComponent implements OnInit {
       const nombrePkmn: string = this.pkmn.nombre!;
       this.router.navigate(['/', nombrePkmn]);
     }
+  }
+
+  verFiltro(){
+    this.visibilidadFiltro = true;
+  }
+
+  ocultarFiltro(){
+    this.visibilidadFiltro = false;
+  }
+
+  onFiltrar(){
+    this.arrayTipo1 = this.pkmnService.obtenerPokemonsPorTipo1(this.tipoInput);
+    this.arrayTipo2 = this.pkmnService.obtenerPokemonsPorTipo2(this.tipoInput);
+
+    this.visibilidadLista = true;
   }
 }
