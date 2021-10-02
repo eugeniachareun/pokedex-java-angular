@@ -279,6 +279,14 @@ img{
   padding-right: 10%;
 }
 
+ #busqueda-filtro label{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 24px;
+}
+
 /* ====================
 	*   FORMULARIOS   *
 ==================== */
@@ -492,6 +500,8 @@ h6{
 
 .margin-bottom {margin-bottom: 20px;}
 .margin-top {margin-top: 20px;}
+
+.padding-top{padding-top: 25px;}
 
 .margin-x-auto {margin-left: auto; margin-right: auto;}
 .padding-x-auto {padding-left: auto; padding-right:auto;}

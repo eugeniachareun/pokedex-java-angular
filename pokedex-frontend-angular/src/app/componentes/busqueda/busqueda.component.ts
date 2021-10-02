@@ -67,6 +67,7 @@ export class BusquedaComponent implements OnInit {
   }
 
   ocultarFiltro(){
+    this.visibilidadLista = false;
     this.visibilidadFiltro = false;
   }
 

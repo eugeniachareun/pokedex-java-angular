@@ -1,26 +1,38 @@
 <div class="contenedor">
   <div class="card">
     <form class="grid no-gap text-center" #f="ngForm" (ngSubmit)="f.form.valid && onBuscar()">
-      <input type="text" name="busqueda" class="input" placeholder="Nombre o número del pokemon" [(ngModel)]="busquedaInput" required>
+      <input type="text" name="busqueda" class="input" placeholder="Nombre o número del pokemon"
+        [(ngModel)]="busquedaInput" required>
       <button type="submit" class="boton btn-ancho">
         <i class="fas fa-search"></i>
       </button>
     </form>
-    <button class="boton btn-negro" (click)="verFiltro()">Ver lista de pokemons por tipo</button>
-  <form *ngIf="visibilidadFiltro" #ff="ngForm" (ngSubmit)="ff.form.valid && onFiltrar()">
-    <label>Tipo a filtrar: </label>
-    <select name="filtro" id="filtro" size="5" required [(ngModel)]="tipoInput">
-      <option value="none" disabled> --Seleccione un tipo-- </option>
-      <option *ngFor="let tipoK of tipoKeys | slice:0:18; let tipoV of tipoValues | slice:0:18"
-              [ngValue]="tipoK"> {{tipoV}} </option>
-    </select>
-    <button type="submit" class="boton">
-      <i class="fas fa-sliders-h"></i> Filtrar
-    </button>
-  </form>
+    <button *ngIf="!visibilidadFiltro" class="boton btn-negro margin-top" (click)="verFiltro()">Mostrar filtrado por
+      tipo</button>
+    <button *ngIf="visibilidadFiltro" class="boton btn-negro margin-top" (click)="ocultarFiltro()">Ocultar filtrado por
+      tipo</button>
 
-  <section *ngIf="visibilidadLista" class="table-responsive">
-    <table id="pokemons-table" class="table margin-x-auto">
+    <form *ngIf="visibilidadFiltro"
+          class="grid col-2 med-col-1 padding-top"
+          #ff="ngForm" id="busqueda-filtro"
+          (ngSubmit)="ff.form.valid && onFiltrar()">
+
+        <label>Tipo a filtrar </label>
+        <select name="filtro" id="filtro" size="5" required [(ngModel)]="tipoInput">
+          <option value="none" disabled> --Seleccione un tipo-- </option>
+          <option *ngFor="let tipoK of tipoKeys | slice:0:18; let tipoV of tipoValues | slice:0:18" [ngValue]="tipoK">
+            {{tipoV}} </option>
+        </select>
+
+        <div class="span-2 med-span-1 text-center padding-top">
+          <button type="submit" class="boton btn-negro">
+            <i class="fas fa-sliders-h"></i> Filtrar
+          </button>
+        </div>
+    </form>
+
+    <section *ngIf="visibilidadLista" class="table-responsive">
+      <table id="pokemons-table" class="table margin-x-auto">
         <thead>
           <tr>
             <th>#</th>
@@ -46,7 +58,7 @@
               <img class="tipo-img" src="../../../assets/tipos/{{pkmn.tipo2}}.gif" alt="{{pkmn.tipo2}}">
             </td>
             <td>
-              <a href="/{{pkmn.nombre}}" class="boton btn-negro"> <i class="fas fa-book"></i>  Ver detalle </a>
+              <a href="/{{pkmn.nombre}}" class="boton btn-negro"> <i class="fas fa-book"></i> Ver detalle </a>
             </td>
             <ng-template #relleno>
               <td></td>
@@ -67,7 +79,7 @@
               <img class="tipo-img" src="../../../assets/tipos/{{pkmn2.tipo2}}.gif" alt="{{pkmn2.tipo2}}">
             </td>
             <td>
-              <a href="/{{pkmn2.nombre}}" class="boton btn-negro"> <i class="fas fa-book"></i>  Ver detalle </a>
+              <a href="/{{pkmn2.nombre}}" class="boton btn-negro"> <i class="fas fa-book"></i> Ver detalle </a>
             </td>
             <ng-template #relleno>
               <td></td>
@@ -76,6 +88,6 @@
 
         </tbody>
       </table>
-  </section>
+    </section>
   </div>
 </div>
