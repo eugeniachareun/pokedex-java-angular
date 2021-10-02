@@ -23,10 +23,12 @@ export class PokemonService{
 
   obtenerPokemonsPorTipo1(tipo : Tipo){
     this.pokemonsTipo1 = this.pokemons.filter(pokemon => pokemon.tipo1 == tipo);
+    return this.pokemonsTipo1.sort((a,b) => a.nroPkmn!.localeCompare(b.nroPkmn!));
   }
 
   obtenerPokemonsPorTipo2(tipo : Tipo){
     this.pokemonsTipo2 = this.pokemons.filter(pokemon => pokemon.tipo2 == tipo);
+    return this.pokemonsTipo1.sort((a,b) => a.nroPkmn!.localeCompare(b.nroPkmn!));
   }
 
   obtenerPokemonPorId(idPkmn : number){
