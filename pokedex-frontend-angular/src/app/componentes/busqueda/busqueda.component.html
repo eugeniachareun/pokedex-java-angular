@@ -2,17 +2,17 @@
   <div class="card text-center">
     <header>
       <h1 class="display-2 med-display-2 peq-display-2">Búsqueda</h1>
-      <form class="grid no-gap" #f="ngForm" (ngSubmit)="f.form.valid && onBuscar()" id="busqueda">
+      <form #f="ngForm" (ngSubmit)="f.form.valid && onBuscar()" id="busqueda">
         <input type="text" name="busqueda" class="input" placeholder="Nombre o número del pokemon"
           [(ngModel)]="busquedaInput" required>
         <button type="submit" class="boton">
           <i class="fas fa-search"></i>
         </button>
       </form>
-      <div class="text-left" id="busqueda-botones" class="flex-space margin-top">
+      <div class="text-left" id="busqueda-botones" class="flex-space">
         <div>
-          <button *ngIf="!visibilidadFiltro" class="boton btn-negro margin-top" (click)="verFiltro()">Mostrar filtrado por tipo</button>
-          <button *ngIf="visibilidadFiltro" class="boton btn-negro margin-top" (click)="ocultarFiltro()">Ocultar filtrado por tipo</button>
+          <button *ngIf="!visibilidadFiltro" class="boton btn-negro margin-top" (click)="verFiltro()">Listado por tipos</button>
+          <button *ngIf="visibilidadFiltro" class="boton btn-negro margin-top" (click)="ocultarFiltro()">Ocultar listado por tipo</button>
         </div>
         <div>
           <button *ngIf="!visibilidadRandom" class="boton btn-azul margin-top" (click)="mostrarRandom()">¡Sorpresa!</button>

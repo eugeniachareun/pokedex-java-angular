@@ -284,13 +284,6 @@ img{
   padding-right: 10%;
 }
 
-#busqueda input{
-  width: auto;
-}
-
-#busqueda-botones{
-  margin-left: 15px;
-}
 
 #busqueda-filtro label{
   display: flex;
