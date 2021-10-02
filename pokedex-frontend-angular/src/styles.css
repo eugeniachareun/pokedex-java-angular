@@ -279,7 +279,11 @@ img{
   padding-right: 10%;
 }
 
- #busqueda-filtro label{
+#busqueda input{
+  width: auto;
+}
+
+#busqueda-filtro label{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -343,7 +347,7 @@ form .input:focus{
 }
 
 .btn-ancho{
-  width: 95%;
+  width: 85%;
 }
 
 .btn-peq{
@@ -512,5 +516,6 @@ h6{
 .text-justify{text-align: justify;}
 
 .width-100{ width: 100%;}
+.width-auto{width: auto;}
 
 .gap-50{gap: 50px;}
