@@ -11,7 +11,6 @@ import { PokemonService } from './service/pokemon.service';
 import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './componentes/header/header.component';
 import { FooterComponent } from './componentes/footer/footer.component';
-import { RandomComponent } from './componentes/random/random.component';
 import { PokemonsComponent } from './componentes/pokemons/pokemons.component';
 
 @NgModule({
@@ -20,7 +19,6 @@ import { PokemonsComponent } from './componentes/pokemons/pokemons.component';
   BusquedaComponent,
   HeaderComponent,
   FooterComponent,
-  RandomComponent,
   PokemonsComponent,
   PokemonComponent
   ],
