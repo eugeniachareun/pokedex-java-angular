@@ -9,22 +9,28 @@
           <i class="fas fa-search"></i>
         </button>
       </form>
-      <div class="text-left" id="busqueda-botones" class="flex-space">
-        <div>
-          <button *ngIf="!visibilidadFiltro" class="boton btn-negro margin-top" (click)="verFiltro()">Listado por tipos</button>
-          <button *ngIf="visibilidadFiltro" class="boton btn-negro margin-top" (click)="ocultarFiltro()">Ocultar listado por tipo</button>
+      <div class="text-left margin-top" id="busqueda-botones" class="flex-space">
+        <div id="busqueda-botones-filtro">
+          <button *ngIf="!visibilidadFiltro" class="boton btn-negro" (click)="verFiltro()">Listado por
+            tipos</button>
+          <button *ngIf="visibilidadFiltro" class="boton btn-negro" (click)="ocultarFiltro()">Ocultar listado
+            por tipo</button>
         </div>
-        <div>
-          <button *ngIf="!visibilidadRandom" class="boton btn-azul margin-top" (click)="iniciarRandom()">¡Sorpresa!</button>
-          <button *ngIf="visibilidadRandom" class="boton btn-azul margin-top" (click)="ocultarRandom()">Ocultar pokemon random</button>
+        <div id="busqueda-botones-random">
+          <button *ngIf="!visibilidadRandom" class="boton btn-azul"
+            (click)="iniciarRandom()">¡Sorpresa!</button>
+          <button *ngIf="visibilidadRandom" class="boton btn-azul" (click)="ocultarRandom()">Ocultar pokemon
+            random</button>
+          <button *ngIf="visibilidadRandom" class="boton btn-verde margin-left" (click)="iniciarRandom()">
+            <i class="fas fa-redo"></i>
+          </button>
         </div>
       </div>
-
     </header>
 
     <section>
-      <form *ngIf="visibilidadFiltro && !visibilidadRandom" class="grid col-2 med-col-1 padding-top" #ff="ngForm" id="busqueda-filtro"
-        (ngSubmit)="ff.form.valid && onFiltrar()">
+      <form *ngIf="visibilidadFiltro && !visibilidadRandom" class="grid col-2 med-col-1 padding-top" #ff="ngForm"
+        id="busqueda-filtro" (ngSubmit)="ff.form.valid && onFiltrar()">
 
         <label>Tipo a filtrar </label>
         <select name="filtro" id="filtro" size="5" required [(ngModel)]="tipoInput">
@@ -41,7 +47,7 @@
       </form>
     </section>
 
-    <section *ngIf="visibilidadLista" class="table-responsive">
+    <section *ngIf="visibilidadLista" class="table-responsive padding-top">
       <table id="pokemons-table" class="table margin-x-auto">
         <thead>
           <tr>
@@ -101,23 +107,25 @@
     </section>
 
     <section *ngIf="visibilidadRandom && !visibilidadFiltro" class="text-center" id="pokemon-card">
-        <div id="header" class="margin-top">
-          <h2 class="display-2 med-display-2 peq-display-2 span-2">{{pkmnRandom.nombre}} <span>Nº {{pkmnRandom.nroPkmn}}</span></h2>
-        </div>
-        <div class="grid col-2 peq-col-1">
-          <img id="pkmn-img" class="margin-x-auto" src="../../../assets/img/{{pkmnRandom.nroPkmn!}}.png"
-            alt="{{pkmnRandom.nombre}}">
-          <div class="detalle">
-            <p class="text-justify">{{pkmnRandom.descripcion}}</p>
-            <div id="tipos" class="text-center">
-              <h3>Tipo:</h3>
-              <img src="../../../assets/tipos/{{pkmnRandom.tipo1}}.gif" alt="{{pkmnRandom.tipo1}}">
-              <span *ngIf="pkmnRandom.tipo2! != 'noTiene'; else relleno "><img
-                  src="../../../assets/tipos/{{pkmnRandom.tipo2}}.gif" alt="{{pkmnRandom.tipo2}}"></span>
-              <ng-template #relleno><span></span></ng-template>
-            </div>
+      <div id="header" class="margin-top">
+        <h2 class="display-2 med-display-2 peq-display-2 span-2">{{pkmnRandom.nombre}} <span>Nº
+            {{pkmnRandom.nroPkmn}}</span></h2>
+      </div>
+      <div class="grid col-2 peq-col-1">
+        <img id="pkmn-img" class="margin-x-auto" src="../../../assets/img/{{pkmnRandom.nroPkmn!}}.png"
+          alt="{{pkmnRandom.nombre}}">
+        <div class="detalle">
+          <p class="text-justify">{{pkmnRandom.descripcion}}</p>
+          <div id="tipos" class="text-center margin-bottom-40">
+            <h3>Tipo:</h3>
+            <img src="../../../assets/tipos/{{pkmnRandom.tipo1}}.gif" alt="{{pkmnRandom.tipo1}}">
+            <span *ngIf="pkmnRandom.tipo2! != 'noTiene'; else relleno "><img
+                src="../../../assets/tipos/{{pkmnRandom.tipo2}}.gif" alt="{{pkmnRandom.tipo2}}"></span>
+            <ng-template #relleno><span></span></ng-template>
           </div>
+          <a href="/{{pkmnRandom.nombre}}" class="boton btn-negro"> <i class="fas fa-book"></i>  Ver registro </a>
         </div>
+      </div>
     </section>
 
   </div>

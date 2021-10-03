@@ -284,6 +284,23 @@ img{
   padding-right: 10%;
 }
 
+@media screen and (max-width: 695px){
+  #busqueda input{
+    margin-bottom: 0;
+  }
+
+  #busqueda button{
+    width: 91%;
+    margin-bottom: 50px;
+  }
+}
+
+@media screen and (max-width: 653px){
+  #busqueda-botones-random button:last-of-type {
+    margin-left:0;
+  }
+}
+
 
 #busqueda-filtro label{
   display: flex;
@@ -350,6 +367,10 @@ form .input:focus{
 
 .btn-verde{
   background: var(--verde);
+}
+
+.btn-verde:hover{
+  background: #75b1a1;
 }
 
 .btn-azul{
@@ -491,7 +512,7 @@ h6{
 }
 
 /*Display en pantalla pequeña*/
-@media screen and (max-width: 992px){
+@media screen and (max-width: 567px){
   .peq-display-1{
     font-weight: 700;
     font-size: 44px;
@@ -519,8 +540,12 @@ h6{
 .no-margin-bottom {margin-bottom: 0;}
 .no-margin.left {margin-left: 0;}
 
-.margin-bottom {margin-bottom: 20px;}
 .margin-top {margin-top: 20px;}
+.margin-right{margin-right: 15px};
+.margin-bottom {margin-bottom: 20px;}
+.margin-bottom-40{margin-bottom: 40px;}
+.margin-left {margin-left: 20px;}
+
 
 .padding-top{padding-top: 25px;}
 .padding-right{padding-right: 20px;}
