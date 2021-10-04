@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './componentes/header/header.component';
 import { FooterComponent } from './componentes/footer/footer.component';
 import { PokemonsComponent } from './componentes/pokemons/pokemons.component';
+import { NotFoundComponent } from './componentes/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { PokemonsComponent } from './componentes/pokemons/pokemons.component';
   HeaderComponent,
   FooterComponent,
   PokemonsComponent,
-  PokemonComponent
+  PokemonComponent,
+  NotFoundComponent
   ],
   imports: [
     BrowserModule,
