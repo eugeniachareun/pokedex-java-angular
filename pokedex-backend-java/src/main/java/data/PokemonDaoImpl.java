@@ -11,6 +11,7 @@ import javax.persistence.PersistenceContext;
  *
  * @author Eugenia Chareun <eugenia.chareun@gmail.com>
  */
+
 @Stateless
 public class PokemonDaoImpl implements PokemonDao{
 
@@ -67,7 +68,6 @@ public class PokemonDaoImpl implements PokemonDao{
   public void hidePokemon(Pokemon pkmn) {
     pkmn.setMostrar(Short.parseShort("0"));
     em.merge(pkmn);
-    
   }
   
   @Override

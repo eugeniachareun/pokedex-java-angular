@@ -14,14 +14,11 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import org.eclipse.persistence.annotations.ConversionValue;
-import org.eclipse.persistence.annotations.Convert;
-import org.eclipse.persistence.annotations.ObjectTypeConverter;
-
 /**
  *
  * @author Eugenia Chareun <eugenia.chareun@gmail.com>
  */
+
 @Entity
 @NamedQueries({
   @NamedQuery(name = "Pokemon.findAll", query = "SELECT p FROM Pokemon p"),
@@ -88,7 +85,7 @@ public class Pokemon implements Serializable {
 
   
   
-  public Pokemon(Integer idPkmn, String nroPkmn, String nombre, Tipo tipo1, Tipo tipo2) {
+  public Pokemon(Integer idPkmn, String nroPkmn, String nombre, Tipo tipo1, Tipo tipo2){
     this.idPkmn = idPkmn;
     this.nroPkmn = nroPkmn;
     this.nombre = nombre;

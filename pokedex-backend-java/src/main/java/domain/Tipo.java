@@ -4,6 +4,7 @@ package domain;
  *
  * @author Eugenia Chareun <eugenia.chareun@gmail.com>
  */
+
 public enum Tipo {
   Acero, 
   Agua,

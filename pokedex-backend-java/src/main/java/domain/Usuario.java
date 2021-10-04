@@ -15,6 +15,7 @@ import javax.validation.constraints.Size;
  *
  * @author euge
  */
+
 @Entity
 @NamedQueries({
   @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u"),

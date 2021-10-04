@@ -11,6 +11,7 @@ import javax.ws.rs.ext.Provider;
  *
  * @author Eugenia Chareun <eugenia.chareun@gmail.com>
  */
+
 @Provider
 public class CorsFilter implements ContainerResponseFilter {
 
