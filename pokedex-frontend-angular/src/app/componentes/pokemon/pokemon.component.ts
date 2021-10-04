@@ -2,7 +2,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApplicationRef, Component, OnInit } from '@angular/core';
 import { PokemonService } from 'src/app/service/pokemon.service';
 import { Pokemon } from 'src/app/model/pokemon.model';
-import { NgForm } from '@angular/forms';
 import { Tipo } from 'src/app/model/tipo.enum';
 
 @Component({
@@ -37,7 +36,7 @@ export class PokemonComponent implements OnInit {
       .recuperarPokemonPorNombre(this.nombre)
       .subscribe((pkmnRecuperado: any) => {
         if (pkmnRecuperado === null || pkmnRecuperado === undefined) {
-          this.router.navigate(['**/**']);
+          this.router.navigate(['**']);
         } else {
           this.pkmn = pkmnRecuperado;
           console.log(
@@ -116,7 +115,6 @@ export class PokemonComponent implements OnInit {
 
     //Refresh
     this.ngOnInit();
-    location.reload();
   }
 
   onEliminarPkmn() {

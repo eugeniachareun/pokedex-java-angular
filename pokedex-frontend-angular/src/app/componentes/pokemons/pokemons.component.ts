@@ -60,6 +60,5 @@ export class PokemonsComponent implements OnInit {
 
     //Refresh
     this.ngOnInit();
-    location.reload();
   }
 }
